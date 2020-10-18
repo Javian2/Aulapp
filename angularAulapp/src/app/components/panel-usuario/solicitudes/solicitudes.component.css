@@ -1,0 +1,197 @@
+h2 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 3em;
+    padding-top: 2em;
+}
+
+.nav {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    width: 462px;
+    height: 44px;
+    border-radius: 5px;
+    padding-left: 3px;
+}
+
+.nav-item a {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: rgb(66, 66, 66);
+    margin-top: 4px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: #515FC9;
+    color: white;
+}
+
+.notification {
+    position: absolute;
+    background-color: #515FC9;
+    border-style: solid;
+    border-color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding-bottom: 17px;
+    min-width: 18px;
+    padding-left: 7px;
+    padding-right: 7px;
+    height: 18px;
+    font-size: 12px;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 18px;
+    top: 118px;
+    left: 108px;
+}
+
+.card {
+    width: 350px;
+    background: #f5f5f5;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+}
+
+.title {
+    text-align: left;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #515FC9;
+}
+
+h5 {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+h6 {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.estado {
+    font-weight: 600;
+    font-size: 14px;
+    text-align: left;
+}
+
+.btn {
+    background-color: #515FC9;
+    margin-left: 3em;
+    border-radius: 10px;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    padding-bottom: 0.4em;
+    padding-top: 0.4em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.btn:hover {
+    color: #515FC9;
+    background-color: white;
+    transition: 300ms;
+}
+
+.btn-aceptar {
+    /*background-color: rgb(85, 201, 81);*/
+    background-color: #515FC9;
+    margin-left: 1em;
+    border-radius: 10px;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    padding-bottom: 0.4em;
+    padding-top: 0.4em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-color: transparent;
+}
+
+.btn-aceptar:hover {
+    color: #515FC9;
+    background-color: rgb(255, 255, 255);
+    transition: 300ms;
+}
+
+.btn-rechazar {
+    background-color: rgb(245, 56, 56);
+    margin-left: 0.3em;
+    border-radius: 10px;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    padding-bottom: 0.4em;
+    padding-top: 0.4em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-color: transparent;
+}
+
+.btn-rechazar:hover {
+    color: rgb(245, 56, 56);
+    background-color: rgb(255, 255, 255);
+    transition: 300ms;
+}
+
+.cta {
+    color: grey;
+    font-style: italic;
+    font-size: 85%;
+}
+
+button {
+    background-color: #515FC9;
+    border-radius: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    margin-top: 2em;
+    margin-left: 2.5em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    transition: 1s;
+}
+
+.btn-disabled {
+    background: rgba(128, 137, 204, 0.8);
+}
+
+.btn-disabled:hover {
+    color: rgba(128, 137, 204, 0.8);
+}
+
+.vacio {
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    margin-bottom: 2em;
+}
+
+.titulo {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 1px;
+}
+
+.descripcion {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 7em;
+}

@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header">
+                <h4 class="card-title">Reportes</h4>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Buscador" id="buscador" #texto (keyup)="setDesde(0);" (keyup)="buscarReserva(texto.value);" name="filterReserva" [(ngModel)]=" filterReserva">
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="tableSortExample">
+                        <thead *ngIf="!filterReserva; else vacio2" class=" text-primary">
+                            <tr>
+                                <th ng-for scope="col" [mdbTableSort]="this.reservavar" sortBy="id">Id Reporte
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.reservavar" sortBy="idimparte">Id Reserva
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.reservavar" sortBy="idusuario">Razón
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.reservavar" sortBy="fecha_solicitud">Comentario
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.reservavar" sortBy="estado">Solucionado
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <ng-template #vacio2>
+                            <tr>
+                                <th ng-for scope="col" [mdbTableSort]="this.MBusquedaImparte" sortBy="id">Id Reporte
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.MBusquedaImparte" sortBy="idimparte">Id Reserva
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.MBusquedaImparte" sortBy="idusuario">Razón
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.MBusquedaImparte" sortBy="fecha_solicitud">Comentario
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.MBusquedaImparte" sortBy="estado">Solucionado
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+
+                            </tr>
+                        </ng-template>
+                        <tbody *ngIf="!filterReserva; else vacio">
+                            <ng-container *ngFor="let reserva of reservavar">
+                                <tr>
+                                    <td>{{reserva.id}}</td>
+                                    <td>{{reserva.idReserva}}</td>
+                                    <td>{{reserva.razon}}</td>
+                                    <td>{{reserva.comentario}}</td>
+                                    <td>{{reserva.solucionado}}</td>
+                                    <td><button (click)="deleteReserva(reserva.id)" class="btn btn-danger btn-block">Borrar</button></td>
+                                </tr>
+                            </ng-container>
+                            <span class="badge badge-light">Página actual: {{(desde/6)+1}}</span>
+                        </tbody>
+                        <ng-template #vacio>
+                            <ng-container *ngFor="let reserva of MBusquedaImparte">
+                                <tr>
+                                    <td>{{reserva.id}}</td>
+                                    <td>{{reserva.idReserva}}</td>
+                                    <td>{{reserva.razon}}</td>
+                                    <td>{{reserva.comentario}}</td>
+                                    <td>{{reserva.solucionado}}</td>
+                                    <td><button (click)="deleteReserva(reserva.id)" class="btn btn-danger btn-block">Borrar</button></td>
+                                </tr>
+                            </ng-container>
+                            <span class="badge badge-light">Página actual: {{(desde/6)+1}}</span>
+                        </ng-template>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div id="p" class="mt-5 mb-5">
+            <button (click)="setDesde(0)" class="btn btn-info float-lg-left">Primero</button>
+            <button (click)="cambiarDesde(-6)" class="btn btn-info float-lg-left">Anterior</button>
+            <div *ngFor="let tot of botones">
+                <button (click)="setDesde(tot*6)" class="btn btn-info">{{tot+1}}</button>
+            </div>
+            <button (click)="cambiarDesde(+6)" class="btn btn-info float-lg-right">Siguiente</button>
+            <button (click)="setDesde((reservatotalEntero*6)-6)" class="btn btn-info float-lg-left">Último({{totEntero}})</button>
+        </div>
+    </div>
+</div>

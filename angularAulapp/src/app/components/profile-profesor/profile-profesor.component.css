@@ -1,0 +1,325 @@
+.page-header {
+    background-image: url('../../../assets/img/perfilprof.webp');
+    background-size: cover;
+    height: 100%;
+    width: auto;
+    margin-top: 0;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+#pedirClase{
+    background-color: #515FC9;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+
+.jumbotron {
+    background-image: url(../../../assets/img/header.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+img {
+    border: none;
+    border-radius: 10px;
+}
+
+.card {
+    border: none;
+    margin-left: 1em;
+}
+
+.card-foto {
+    border-radius: 10px;
+    max-width: 20rem;
+}
+
+#descripcion{
+    color: #757A99;
+    font-weight: 500;
+    margin: 2em;
+}
+
+.usuariosDesde {
+    background: rgba(37, 37, 55, 0.44);
+    border-radius: 10px;
+    padding: 10px;
+    width: 10rem;
+    font-size: 0.8rem;
+    margin-left: 2em;
+}
+
+.card-header {
+    border-left: 5px solid #515FC9;
+    background-color: white;
+}
+
+.admin2{
+    background-color: #F6D9D4;
+    border-radius: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    margin-left: 1em;
+    color: #FF8067;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.opinion {
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+}
+
+.opinion p {
+    font-size: 0.8rem;
+}
+
+.opinion img {
+    border-radius: 100px;
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.asignaturas {
+    border: 2px solid whitesmoke;
+    border-radius: 12px;
+    padding: 16px;
+    height:210px; 
+    overflow: auto;
+    background-color: white;
+}
+
+.asignaturas button {
+    border: none;
+    background-color: white;
+    display: block;
+    width: 100%;
+    color: #48465B;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.asignaturas button:active {
+    border-color: rgb(241, 241, 241);
+    background-color: rgb(241, 241, 241);
+    display: block;
+    width: 100%;
+}
+
+.asignaturas button:hover {
+    border: none;
+    background-color: rgb(241, 241, 241);
+}
+
+.asignaturas button:focus {
+    border: none;
+    background-color: rgb(241, 241, 241);
+}
+
+.precio {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #515FC9;
+}
+
+#tarjeta {
+    margin-bottom: -10px;
+}
+
+
+.admin{
+    background-color: rgb(208, 205, 255);
+    border-radius: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    margin-left: 1em;
+    color: #515FC9;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    }
+    
+    ::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #ccc;  
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+    background: rgb(121, 121, 121);  
+    }
+
+.rating>label:before {
+    margin: 5px;
+    font-size: 15px;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+}
+
+.rating>label {
+    color: rgb(179, 179, 179);
+}
+
+#media>label:before {
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+.icon {
+    margin-top: -3em;
+    font-size: 18px;
+    color: #9FA3B9;
+}
+.input-form{
+    margin-bottom: 1.2em;
+}
+
+.input-form:focus{
+    border-color: #5348FF;
+}
+
+.paypal{
+    margin-left: 1em;
+    margin-right: 1em;
+    pointer-events: none;
+    opacity: 0.5
+}
+
+
+/* Modal */
+
+#btn{
+    background-color: #5348FF;
+    color: white;
+}
+
+#CerrarModal{
+    background-color: rgb(208, 205, 255);
+    color: #5348FF;
+}
+
+.close {
+    color: black;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+#favoritos1:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#favoritos2:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+#fav {
+    color: rgb(255, 61, 61);
+}
+
+.card-foto:hover .enlace {
+    opacity: 1;
+}
+
+.enlace {
+    position: absolute;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    opacity: 0;
+    background-color: #515FC9;
+    transition: .5s ease;
+}
+
+.enlace a {
+    color: white;
+    text-decoration: none;
+}
+
+#datetime{
+    display: flex;
+    flex-direction: row;
+}
+
+#media span:hover {
+    cursor: pointer;
+    text-decoration: underline solid black;
+}
+
+#start:focus{
+    border-color: #5348FF;
+}
+
+
+#fecha:focus{
+    border-color: #5348FF; 
+}
+
+#horarioPerfil{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid whitesmoke;
+    border-radius: 12px;
+    padding: 16px;
+    height:210px; 
+    overflow: auto;
+    background-color: white;
+    width: 410px;
+}
+
+#horarioPerfil>div{
+    display: flex;
+}
+#horarioPerfil>div>div{
+    display: flex;
+}
+
+#horarioPerfil>div>div>span{
+    margin-left: 0.5em;
+}
+
+#time2{
+    height: 3.05em;
+}
+
+#time{
+    height: 3.05em;
+}
+
+#textoHorario{
+    margin-right: 9em;
+}
+
+.badge{
+    background-color: #515FC9;
+    color: white;
+    max-height: 25px;
+}

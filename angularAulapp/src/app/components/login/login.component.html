@@ -1,0 +1,58 @@
+<div class="page-header header-filter" style="background-image: url('.../../../assets/img/fondonuevo.webp'); background-size: cover; background-position: top center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                <div class="card card-login">
+                    <form class="form" ngNativeValidate #f="ngForm" (ngSubmit)="ingresar(f)">
+                        <div class="card-header card-header-primary text-center">
+                            <h4 class="card-title">Iniciar sesión</h4>
+                            <div class="social-line">
+
+                                <div class="row">
+                                    <div class="col-12 text-center mb-5 mt-4">
+                                        <button type="button" id="btnGoogle" class="btn btn-googleplus fab fa-3x" data-toogle="tooltip"><img src="https://img.icons8.com/color/48/000000/google-logo.png" width="20" height="20">  Inicia sesión con Google </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input [ngModel]="email" type="email" placeholder="Correo electrónico" name="email" required class="form-control" id="login">
+                            </div>
+
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input ngModel type="password" placeholder="Contraseña" name="contrasena" required class="form-control" id="pwd">
+                            </div>
+
+
+                        </div>
+                        <div *ngIf="fallo" class="text-center text-danger d-block">
+                            El correo y/o la contraseña elegida no son válidas.
+                        </div>
+                        <div class="footer text-center">
+                            <input [(ngModel)]="recuerdame" name="recuerdame" type="checkbox" id="checkbox-signup">
+                            <label for="checkbox-signup" class="ml-2 text-dark"> Recuérdame</label>
+                        </div>
+                        <div class="footer text-center">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" class="btn mb-4">Iniciar sesión</button><br>
+                                    <span style="color:rgb(39, 39, 39); font-size: 14px;">¿Has olvidado tu contraseña? <a style="color: #515FC9; text-decoration: none; font-weight: 800;" routerLink='/recuperar'>Recupérala</a><br>
+                                    ¿No tienes cuenta aún? <a style="color: #515FC9; text-decoration: none; font-weight: 800;" routerLink='/register'> Regístrate </a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

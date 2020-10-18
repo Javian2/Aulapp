@@ -1,0 +1,82 @@
+<div class="page-header header-filter" style="background-image: url('../../../assets/img/headway-5QgIuuBxKwM-unsplash.webp'); background-size: cover; background-position: top center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-7 mt-5 mb-4 ml-auto mr-auto">
+                <div class="card card-login ">
+                    <div id="header" class="card-header card-header-primary text-center">
+                        <h4 class="card-title">Registrarse</h4>
+                        <div class="social-line">
+
+                            <div class="row">
+                                <div class="col-12 text-center mb-5 mt-4">
+                                    <button type="button" id="btnGoogle" class="btn btn-googleplus fab fa-3x" data-toogle="tooltip" title="Iniciar sesión con Google"> <div class=""><img src="https://img.icons8.com/color/48/000000/google-logo.png" width="20" height="20">  Regístrate con Google</div></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()" class="mr-5 ml-5 pr-4 pl-4 mt-1 pt-0 text-light">
+
+                        <div class="tabs">
+                            <input type="radio" name="serprofe" id="radio-1" checked />
+                            <label class="tab" for="radio-1">Ser alumno</label>
+
+                            <input type="radio" formControlName="serprofe" id="radio-2" name="serprofe" />
+                            <label class="tab" for="radio-2">Ser profesor</label>
+
+                            <span class="glider"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input formControlName="nombre" name="nombre" style="margin-top: 1em;" type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+                            <span class="form-group pl-1" *ngIf="forma.controls['nombre'].touched && forma.controls['nombre'].errors?.required">
+                                <label class="text-dark" class="text-danger" >El Nombre es obligatorio</label>
+                            </span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input #valueBusqueda (keyup)="comprobarEmail(valueBusqueda.value);" formControlName="email" name="email" placeholder="Email" required type="email" class="form-control" id="email">
+                            <span class="form-group pl-1" *ngIf="forma.controls['email'].touched && forma.controls['email'].errors?.required">
+                                <label class="text-dark " class="text-danger" >El Email es obligatorio</label>
+                            </span>
+                            <span class="form-group pl-1" *ngIf="forma.controls['email'].touched && forma.controls['email'].errors?.email">
+                                <label class="text-dark " class="text-danger" >Formatos del email invalidos</label>
+                            </span>
+                        </div>
+
+                        <div class="form-group">
+                            <div id="contra">
+                                <input formControlName="contrasena" name="contrasena" placeholder="Contraseña" required [type]="password" class="form-control" id="pwd">
+                                <span (click)="onClick()">
+                                    <i class="fa fa-eye" style="color:rgb(29, 29, 29)" aria-hidden="true" *ngIf="!show"></i>
+                                    <i class="fa fa-eye-slash" style="color:rgb(29, 29, 29)" aria-hidden="true" *ngIf="show"></i>
+                                </span>
+                            </div>
+                            <label class="text-dark" id="reco">Debe tener una longitud mínima de 6 a 20 caracteres y contener como mínimo un número.</label>
+                            <span class="form-group pl-1" *ngIf="forma.controls['contrasena'].touched && forma.controls['contrasena'].errors?.required">
+                                <label class="text-dark" class="text-danger" >La contraseña es obligatoria</label>
+                            </span>
+                            <span class="form-group pl-1" *ngIf="forma.controls['contrasena'].touched && forma.controls['contrasena'].errors?.pattern">
+                                <label class="text-dark" class="text-danger" > Formato incorrecto</label>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input formControlName="check" required name="politica" class="form-control" type="checkbox" id="checkbox-politica" />
+                            <label id="checks" class="text-dark" for="checkbox-politica">Acepto la <a id="politica" class="text-dark" href="https://aulapp.ovh/inkwell/politica-de-privacidad/">política de privacidad</a>
+                                    y confirmo ser mayor de 13 años</label>
+                            <span class="form-group pl-1" *ngIf="forma.controls['check'].touched && forma.controls['check'].errors?.required">
+                                        <label class="text-dark" class="text-danger" >Debes aceptar las políticas de privacidad</label>
+                                    </span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button (click)="cambiarImagen()" type="submit" class="btn mt-2">Registrarse</button>
+                            </div>
+                        </div>
+                        <p class="text-center mt-3 text-dark">¿Ya tienes una cuenta? <a id="checks2" routerLink='/login'> Inicia sesión </a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

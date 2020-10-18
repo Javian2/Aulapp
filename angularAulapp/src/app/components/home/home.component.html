@@ -1,0 +1,145 @@
+<div class="page-header header-filter" data-parallax="true" style="background-image: url('/assets/img/fondo2.webp')">
+    <div class="text-center animated fadeIn">
+        <h2>Aprende o enseña desde <span class="underline--magical">cualquier lugar</span></h2>
+        <h1 class="principal">
+            <span class="txt-rotate" data-period="2000" data-rotate='[ "matemática discreta", "alemán para niños", "guerra civil española para selectividad", "con Manuel López" ]'></span>
+        </h1>
+
+    </div>
+
+    <div class="form-group animated fadeIn">
+        <input class="search-bar" type="text" #valueBusqueda (keyup)="estiloBuscador(valueBusqueda.value);" (keyup.enter)="realizarBusqueda(valueBusqueda.value);" class="form-control" placeholder="Busca por asignaturas, profesores o materiales" id="buscador"
+            name="filterAsig" [(ngModel)]="filterAsig">
+    </div>
+    <div id="resultados" class="animated fadeIn">
+        <div *ngFor="let imparte of varimparte | filterAsig:filterAsig">
+            <div role="button" tabindex="0" (keyup.enter)="realizarBusqueda(imparte);" (click)="realizarBusqueda(imparte);" id="resultado"><i class="fas fa-search"></i> {{imparte}}</div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="sub-header" *ngIf="malumno" data-parallax="true" style="background-image: url('/assets/img/fondo-3.webp')">
+
+    <!-- <ul class="nav nav-pills mb-3 ml-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" (click)="mostrarProfesor()" aria-selected="true">Como profesor</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" (click)="mostrarAlumno()" aria-selected="true">Como alumno</a>
+        </li>
+
+    </ul> -->
+
+    <h1 style="font-size: 24px;" class="text-center pt-5 animated fadeIn">Cómo funciona Aulapp</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 text-center animated fadeIn">
+                <img src="../../../assets/img/2.webp" alt="">
+                <p>
+                    Encuentra tu profesor ideal y <br> reserva una clase con él.
+                </p>
+            </div>
+            <div class="col-sm-4 text-center animated fadeIn">
+                <img src="../../../assets/img/3.webp" alt="">
+                <p>
+                    Realiza una clase a través de <br> videollamada junto a tus profesores seleccionados.
+                </p>
+            </div>
+            <div class="col-sm-4 text-center animated fadeIn">
+                <img src="../../../assets/img/1.webp" alt="">
+                <p>
+                    Tienes a tu disposición <br> durante la videollamada una <br> pizarra virtual y un entorno 3D.
+                </p>
+            </div>
+        </div>
+        <div class="text-center">
+            <button [routerLink]="['/register']" routerLinkActive="router-link-active" class="btn" *ngIf="logueado==false">Comienza ya</button>
+        </div>
+        <div class="text-center">
+            <button [routerLink]="['/buscador']" routerLinkActive="router-link-active" class="btn" *ngIf="logueado==true">Busca ya</button>
+        </div>
+    </div>
+</div>
+
+<div class="sub-header" *ngIf="mprofe" data-parallax="true" style="background-image: url('/assets/img/fondo-3.webp')">
+
+    <ul class="nav nav-pills mb-3 ml-3" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" (click)="mostrarProfesor()" aria-selected="true">Como profesor</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link " id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" (click)="mostrarAlumno()" aria-selected="true">Como alumno</a>
+        </li>
+
+    </ul>
+
+    <h1 style="font-size: 24px;" class="text-center pt-5 animated fadeIn">Cómo funciona Aulapp</h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4 text-center animated fadeIn">
+                <img src="../../../assets/img/2.webp" alt="">
+                <p>
+                    Gestiona tu horario y <br> organiza tus próximas clases.
+                </p>
+            </div>
+            <div class="col-sm-4 text-center animated fadeIn">
+                <img src="../../../assets/img/3.webp" alt="">
+                <p>
+                    Realiza clases a traves de <br> videollamadas con tus alumnos.
+                </p>
+            </div>
+            <div class="col-sm-4 text-center animated fadeIn">
+                <img src="../../../assets/img/1.webp" alt="">
+                <p>
+                    Tienes a tu disposición una <br> pizarra virtual y un entorno 3D <br> para enriquezer tus videollamadas. 
+                </p>
+            </div>
+        </div>
+        <div class="text-center">
+            <button [routerLink]="['/register']" routerLinkActive="router-link-active" class="btn" *ngIf="logueado==false">Comienza ya</button>
+        </div>
+        <div class="text-center">
+            <button [routerLink]="['/panel-usuario/gestionar-cuenta']" routerLinkActive="router-link-active" class="btn" *ngIf="logueado==true">A trabajar</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 style="font-size: 24px;" class="text-center pt-5 mb-2 mt-2">Nuestros mejores profesores</h2>
+    <div class="row text-center">
+        <div class="col-lg-3 col-md-4" *ngFor="let profesor of profe; let indice=index">
+            <div class="card border-dark mb-5 m-2" *ngIf="profe[indice] != null">
+                <img [src]="profe[indice].foto | imagen" class="rounded-circle" alt="Foto" [routerLink]="['/profile-profesor', profe[indice].id]">
+                <div class="card-body">
+                    <h5 class="card-title" [routerLink]="['/profile-profesor', profe[indice].id]">{{profe[indice].nombre}} {{profe[indice].apellidos}}</h5>
+
+                    <ngcontainer *ngFor="let asig of asignaturas">
+                        <p *ngIf="profe[indice].nombre == asig.nombreProfesor" 
+                        style="margin-bottom: -0.1em; font-size: 16px; font-weight: normal; color: #757A99;">{{asig.nombreAsignatura}}</p>
+                     </ngcontainer>
+
+                    <ngcontainer *ngFor="let prof of profvar">
+                        <fieldset *ngIf="prof.idUsuario == profe[indice].id" id="media" class="rating">
+                            <label *ngIf="prof.valoracionMedia>0" style="color: #EEE16B" class="full" for="star1"></label>
+                            <label *ngIf="prof.valoracionMedia<=0" class="full" for="star5"></label>
+
+                            <label *ngIf="prof.valoracionMedia>1" style="color: #EEE16B" class="full" for="star1"></label>
+                            <label *ngIf="prof.valoracionMedia<=1" class="full" for="star4"></label>
+
+                            <label *ngIf="prof.valoracionMedia>2" style="color: #EEE16B" class="full" for="star1"></label>
+                            <label *ngIf="prof.valoracionMedia<=2" class="full" for="star3"></label>
+
+                            <label *ngIf="prof.valoracionMedia>3" style="color: #EEE16B" class="full" for="star1"></label>
+                            <label *ngIf="prof.valoracionMedia<=3" class="full" for="star2"></label>
+
+                            <label *ngIf="prof.valoracionMedia>4" style="color: #EEE16B" class="full" for="star1"></label>
+                            <label *ngIf="prof.valoracionMedia<=4" class="full" for="star1"></label>
+                        </fieldset>
+                    </ngcontainer>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

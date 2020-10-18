@@ -1,0 +1,115 @@
+<div class="container">
+
+    <div class="buscador mt-5 mb-4 animated fadeIn">
+        <h4>Buscador</h4>
+        <div class="input-group mb-3 animated fadeIn">
+            <input type="text" class="form-control" id="buscador" #texto (keyup)="estiloBuscador(texto.value);" (keyup.enter)="buscarProfesor(texto.value); buscarProfAsig(texto.value);" placeholder="Introduce lo que deseas buscar" name="filterAsig" [(ngModel)]="filterAsig"
+                required>
+            <button id="icono-buscador" (click)="buscarProfesor(texto.value); buscarProfAsig(texto.value)" class="btn"><i class="fa fa-search"></i></button>
+        </div>
+        <div id="resultados" class="input-group animated fadeIn">
+            <div *ngFor="let imparte of varimparte | filterAsig:filterAsig">
+                <div role="button" tabindex="0" (click)="buscarProfAsig(imparte);" (click)="buscarProfesor(imparte);" id="result"><i class="fas fa-search"></i> {{imparte}}</div>
+            </div>
+        </div>
+        <div class="nav">
+            <div id="boton-selector" class="form-check form-check-inline">
+                <input class="form-check-input" (click)=" visibleProfe('#resultadoProfe')" type="checkbox" id="inlineCheckbox1" value="option1" [(ngModel)]="check1" checked>
+                <label class="form-check-label" for="inlineCheckbox1">Profesores</label>
+            </div>
+
+            <div id="boton-selector" class="form-check form-check-inline">
+                <input class="form-check-input" (click)=" visibleProfeAsig('#resultadoProfeAsig')" type="checkbox" id="inlineCheckbox3" value="option2" [(ngModel)]="check2" checked>
+                <label class="form-check-label" for="inlineCheckbox3">Asignaturas</label>
+            </div>
+        </div>
+    </div>
+
+    <div id="resultado mt-5 mb-5 animated fadeIn">
+        <h5 *ngIf="variableBusquedaHome">Resultados de búsqueda de '{{variableBusquedaHome}}'</h5>
+        <div id="resultadoProfe" class="row text-center" *ngIf="check1 == true && check2 == false">
+            <div class="col-lg-2 col-sm-4" *ngFor="let profesor of varprofe">
+                <div id="cartaResultado" class="card border-dark m-2 animated fadeIn">
+                    <ng-container>
+                        <a [routerLink]="['/profile-profesor', profesor.id]" target="_blank"><img [src]="profesor.foto |imagen" class="card-img" alt="Foto"></a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{profesor.nombre}}</h5>
+                            <p class="card-text">{{profesor.apellidos}} </p>
+                        </div>
+
+                    </ng-container>
+                </div>
+            </div>
+            <button class="btn btn-link mb-5" (click)="pruebaprofe()" *ngIf="boo">Ver más resultados</button>
+        </div>
+
+        <div id="resultadoProfeAsig" class="row text-center" *ngIf="check2 == true && check1 == false">
+            <ng-container *ngFor="let imparte of PruebaPar">
+                <div *ngIf="imparte!=null && imparte['profesor'] !=null && imparte['imparte'] !=null " class="col-lg-2 col-sm-4">
+
+                    <div id="cartaResultado" class="card border-dark m-2 animated fadeIn">
+
+                        <a [routerLink]="['/profile-profesor', imparte['profesor'].id]" target="_blank"><img [src]=" imparte['profesor'].foto |imagen" class="card-img" alt="Foto"></a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{imparte['imparte'].nombreProfesor}}</h5>
+                            <p class="card-text">{{imparte['imparte'].nombreAsignatura}} </p>
+                            <p class="card-text precio"> {{imparte['imparte'].precio}} &euro;/h</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </ng-container>
+            <button class="btn btn-link mb-5" (click)="buscarProfAsig(variableBusquedaHome,(cont2+6))" *ngIf="boo2">Ver más resultados</button>
+        </div>
+        <div *ngIf="check2 == true && check1 == true">
+            <div class="row text-center" *ngIf="check2 == true && check1 == true">
+
+                <ng-container *ngFor="let imparte of PruebaPar">
+                    <div *ngIf="imparte!=null && imparte['profesor'] !=null && imparte['imparte'] !=null " class="col-lg-2 col-sm-4">
+                        <a [routerLink]="['/profile-profesor', imparte['profesor'].id]" target="_blank">
+                            <div id="cartaResultado" class="card border-dark m-2 animated fadeIn">
+                                <img [src]=" imparte['profesor'].foto |imagen" class="card-img" alt="Foto">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{imparte['imparte'].nombreProfesor}}</h5>
+                                    <p class="card-text"> {{imparte['imparte'].nombreAsignatura}} </p>
+                                    <p class="card-text precio"> {{imparte['imparte'].precio}} &euro;/h</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </ng-container>
+            </div>
+
+            <div class="row text-center" *ngIf="check2 == true && check1 == true">
+
+                <div class="col-lg-2 col-sm-4" *ngFor="let profesor of varprofe">
+                    <a [routerLink]="['/profile-profesor', profesor.id]" target="_blank">
+                        <div id=" cartaResultado" class="card border-dark m-2 animated fadeIn">
+                            <ng-container>
+                                <img [src]="profesor.foto |imagen " class="card-img " alt="Foto ">
+                                <div class="card-body ">
+                                    <h5 class="card-title ">{{profesor.nombre}}</h5>
+                                    <p class="card-text ">{{profesor.apellidos}} </p>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <button *ngIf="boo || boo2" class="btn btn-link mb-5" (click)="pruebaprofe()" (click)="buscarProfAsig(variableBusquedaHome,(cont2+6))">Ver más resultados</button>
+        </div>
+    </div>
+
+
+    <!-- <div class="vacio animated fadeIn" *ngIf="resultadovacio">
+        <img src="../../../assets/img/_2x.png" width="330px" height="auto" style="margin-bottom: 2em;">
+        <p class="titulo">¡Ups!</p>
+        <p class="descripcion">No hemos encontrado ning&uacute;n resultado de '{{variableBusquedaHome}}'</p>
+    </div> -->
+
+
+</div>

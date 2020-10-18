@@ -1,0 +1,265 @@
+<main>
+
+    <div class="wrapper ">
+        <div class="sidebar">
+            <div class="logo">
+                <a class="simple-text logo-normal">
+                    <img *ngIf="user" [src]="user.foto | imagen" class="card-img rounded-circle" style="width: 50px; height: 50px;" alt="...">
+                </a>
+            </div>
+
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="button" style="background-color: rgb(42, 41, 59);">
+                            <!-- data-toggle="modal" data-target="#exampleModalModelo" -->
+                            <i class="fas fa-cubes"></i>
+                            <p onclick="abrirEntorno();" (click)="abrirEntorno3D();">Abrir entorno</p>
+
+                            <!-- <p (click)="abrirEntorno()">Entorno 3D</p> -->
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="nav-item" id="endClass">
+                        <button class="button" (click)="salir()">Finalizar clase</button>
+                    </li>
+                </ul>
+            </div>
+
+
+
+        </div>
+        <div class="main-panel">
+
+            <!-- Modal del motor grafico -->
+            <div id="mydiv">
+                <!--Cabecera para mover el modal-->
+
+                <!--Sidebar-->
+                <div class="flex-container">
+                    <div id="sidebar-uno">
+                        <div id="mydivheader"></div>
+                        <i style="margin-top: -0.5em; padding-top: 3px; color: #6C63FF; font-size: 14px;" (click)="cerrarModelos();" (click)="cerrarEntorno3D();" id="cerrar" class="fas fa-times"></i>
+                        <i (click)="cambiarSidebar1();" id="models" class="fas fa-folder-open"></i>
+                        <i (click)="cambiarSidebar2();" id="ajustes" class="fas fa-cog"></i>
+                    </div>
+                    <div id="sidebar-dos">
+                        <ngcontainer *ngIf="cambiar==false">
+                            <div class="titulo">Modelos</div>
+
+                            <div class="dropdown-container">
+                                <input type="checkbox" id="drop2" />
+                                <label for="drop2">Geometría <i class="fas fa-caret-down"></i></label>
+                                <ul class="content">
+                                    <li><img id="modelos" src="../../../../assets/img/Anillo.png" onclick="modelos('Anillo_Textura.json', 'Color_Oro.jpg');">
+                                        <span id="descripcion">Anillo</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Cilindro.png" onclick="modelos('Cilindro_Textura.json', 'Colores.png');">
+                                        <span id="descripcion">Cilindro</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Cono.png" onclick="modelos('Cono_Textura.json', 'Colores.png');">
+                                        <span id="descripcion">Cono</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Cubo.png" onclick="modelos('Cubo_Textura.json', 'Texturas2.jpg');">
+                                        <span id="descripcion">Cubo</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Esfera.png" onclick="modelos('Esfera_Textura.json', 'Colores.png');">
+                                        <span id="descripcion">Esfera</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Icosaedro.png" onclick="modelos('Icosaedro_Textura.json', 'Colores.png');">
+                                        <span id="descripcion">Icosaedro</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/PiramidePentagonal.png" onclick="modelos('Piramide_Pentagonal_Textura.json', 'Colores.png');">
+                                        <span id="descripcion">Piramide Pentagonal</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/PiramideTriangular.png" onclick="modelos('Piramide_Triangular_Textura.json', 'Colores.png');">
+                                        <span id="descripcion">Piramide Triangular</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/PrismaHexagonal.png" onclick="modelos('Prisma_Hexagonal_Textura.json', 'Colores.png');">
+                                        <span id="descripcion">Prisma Hexagonal</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/PrismaPentagonal.png" onclick="modelos('Prisma_Pentagonal_Textura.json', 'Colores.png');">
+                                        <span id="descripcion">Prisma Pentagonal</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/PrismaTriangular.png" onclick="modelos('Prisma_Triangular.json', 'Colores.png');">
+                                        <span id="descripcion">Prisma Triangular</span></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="dropdown-container">
+                                <input type="checkbox" id="drop3" />
+                                <label for="drop3">Geograf&iacute;a <i class="fas fa-caret-down"></i></label>
+                                <ul class="content">
+                                    <li><img id="modelos" src="../../../../assets/img/Mundo.png" onclick="modelos('Mundo_Textura.json', 'mundo.png');">
+                                        <span id="descripcion">Globo Terr&aacute;queo</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Puente.png" onclick="modelos('Puente_Textura.json', 'piedra2.jpg');">
+                                        <span id="descripcion">Puente </span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/TorreEiffel.png" onclick="modelos('TorreEiffiel.json', 'Plata.jpg');">
+                                        <span id="descripcion">Torre Eiffiel</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Relieve.png" onclick="modelos('relieveTextura.json', 'relieve_textura.png');">
+                                        <span id="descripcion">Mapa Relieve </span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Acueducto.png" onclick="modelos('Acueducto.json', 'piedra4.jpg');">
+                                        <span id="descripcion">Acueducto </span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Pisa.png" onclick="modelos('TorrePisa.json', 'marmol.jpg');">
+                                        <span id="descripcion">Torre de Pisa</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Coliseo.png" onclick="modelos('Coliseo.json', 'piedrablanca.jpg');">
+                                        <span id="descripcion">Coliseo Romano</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Catedral.png" onclick="modelos('Catedral.json', 'marmol.jpg');">
+                                        <span id="descripcion">Catedral </span></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="dropdown-container">
+                                <input type="checkbox" id="drop4" />
+                                <label for="drop4">Biolog&iacute;a <i class="fas fa-caret-down"></i></label>
+                                <ul class="content">
+                                    <li><img id="modelos" src="../../../../assets/img/ADN_Imagen.png" onclick="modelos('ADN.json', 'Colores.png');">
+                                        <span id="descripcion">ADN</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Cuerpo.png" onclick="modelos('Men.json', 'carne.jpg');">
+                                        <span id="descripcion">Cuerpo Humano </span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Corazon.png" onclick="modelos('heart.json', 'heartT2.png');">
+                                        <span id="descripcion">Coraz&oacute;n</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Pulmon.png" onclick="modelos('lungs.json', 'pulmonesT.jpg');">
+                                        <span id="descripcion">Pulmon </span></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="dropdown-container">
+                                <input type="checkbox" id="drop5" />
+                                <label for="drop5">Tecnolog&iacute;a <i class="fas fa-caret-down"></i></label>
+                                <ul class="content">
+                                    <li><img id="modelos" src="../../../../assets/img/Engranajes_Imagen.png" onclick="modelos('Gear_Textura.json', 'Plata.jpg');">
+                                        <span id="descripcion">Engranajes</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Pieza.png" onclick="modelos('figura.json', 'Colores.png');">
+                                        <span id="descripcion">Figura Vistas</span></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="dropdown-container">
+                                <input type="checkbox" id="drop6" />
+                                <label for="drop6">Objeto <i class="fas fa-caret-down"></i></label>
+                                <ul class="content">
+                                    <li><img id="modelos" src="../../../../assets/img/Gafas_Imagen.png" onclick="modelos('Gafas.json', 'negro.jpg');">
+                                        <span id="descripcion">Gafas</span></li>
+
+                                </ul>
+                            </div>
+
+                            <div class="dropdown-container">
+                                <input type="checkbox" id="drop7" />
+                                <label for="drop7">Qu&iacute;mica <i class="fas fa-caret-down"></i></label>
+                                <ul class="content">
+                                    <li><img id="modelos" src="../../../../assets/img/Atomo.png" onclick="modelos('Atomo_Textura.json', 'Colores.png');">
+                                        <span id="descripcion">&Aacute;tomo</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Cafeina.png" onclick="modelos('CafeinaT.json', 'Colores.png');">
+                                        <span id="descripcion">Cafeina</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Agua.png" onclick="modelos('AguaT.json', 'Colores.png');">
+                                        <span id="descripcion">Agua</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Acetona.png" onclick="modelos('AcetonaT.json', 'Colores.png');">
+                                        <span id="descripcion">Acetona</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Metano.png" onclick="modelos('MetanoT.json', 'Colores.png');">
+                                        <span id="descripcion">Metano</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Nitroglicerina.png" onclick="modelos('NitroglicerinaT.json', 'Colores.png');">
+                                        <span id="descripcion">Nitroglicerina</span></li>
+                                    <li><img id="modelos" src="../../../../assets/img/Anfetamina.png" onclick="modelos('AnfetaminaT.json', 'Colores.png');">
+                                        <span id="descripcion">Anfetamina</span></li>
+
+                                </ul>
+                            </div>
+
+                        </ngcontainer>
+
+
+
+                        <ngcontainer *ngIf="cambiar==true">
+                            <div class="titulo">Herramientas</div>
+                            <div class="titulo2">Rotar</div>
+
+                            <img src="../../../../assets/img/1.png" onclick="girarModeloIzquierda()" class="divSquare" style="margin-top: 1em; margin-left: 2em;">
+                            <img src="../../../../assets/img/2.png" onclick="girarModeloDerecha()" class="divSquare" style="margin-top: 1em;">
+                            <div style='clear:both'></div>
+                            <img src="../../../../assets/img/3.png" onclick="girarModeloAbajo()" class="divSquare" style="margin-left: 2em; margin-bottom: 2em;">
+                            <img src="../../../../assets/img/4.png" onclick="girarModeloArriba()" class="divSquare" style="margin-bottom: 2em;">
+
+                            <div class="titulo2" style="margin-right: 5em; margin-bottom: 2em;">Modificar luz</div>
+
+                            <div class="titulo3">Intensidad de la luz:</div>
+                            <input class="range-slider__range" oninput="cambiarLuz(value);" type="range" min="0" max="100" value="50">
+
+                            <div class="titulo3">Posición de la luz:</div>
+                            <input class="range-slider__range" oninput="posicionarLuz(value);" type="range" min="-100" max="100" value="0">
+
+                            <div class="titulo2" style="margin-right: 7.5em; margin-bottom: 2em;">Zoom</div>
+                            <button style="margin-left: 1em; margin-bottom: 2em;  font-weight: 600; font-size: 30px; color: #48465B;" class="divSquare" onclick="alejar();">-</button>
+                            <button style=" font-weight: 600; font-size: 30px; color: #48465B;" class="divSquare" onclick="acercar();">+</button>
+
+
+                        </ngcontainer>
+                    </div>
+                    <div><canvas id="glCanvas" width="700" height="500"></canvas></div>
+                </div>
+
+
+            </div>
+            <!-- Fin del modal del motor grafico -->
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div id="videoconference">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- MENSAJE MODAL QUIERES SALIR -->
+    <div class="modal fade" id="modalSalir" tabindex="-1" role="dialog" aria-labelledby="modalSalirLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title" id="modalSalirLabel">
+                        <h3>Finalizar clase</h3>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    Vas a cerrar el aula. Al terminar, finalizará la clase y no podrás volver a entrar. ¿Estás seguro?
+                </div>
+                <div class="modal-footer" id="btnPregunta">
+                    <button type="submit" style="background-color: #5348FF; color: white;" class="btn btn-primary col-4" (click)="salirAlumno()">Salir del aula</button>
+                    <button type="button" style=" background-color: rgb(208, 205, 255); color: #5348FF;" id="CerrarModal" class="btn btn-secondary col-6" data-dismiss="modal">Continuar en la clase</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- MENSAJE MODAL ENVIAR VALORACIÓN-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="crearValoracion(f)">
+                    <!-- FORMULARIO -->
+                    <div class="modal-body">
+                        <h3 class="modal-title" style="text-align: center; align-items: center; align-self: center;" id="exampleModalLabel">¿Qué tal ha ido?</h3>
+                        <h4 style="color:#5348FF; text-align: center;">Antes de salir, valora al profesor</h4>
+                        <fieldset style="margin-right: 6em;" class="rating">
+                            <input (click)="sacarValorEstrella(5)" type="radio" id="star1" name="rating" value="5" /><label class="full" for="star1"></label>
+                            <input (click)="sacarValorEstrella(4)" type="radio" id="star2" name="rating" value="4" /><label class="full" for="star2"></label>
+                            <input (click)="sacarValorEstrella(3)" type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3"></label>
+                            <input (click)="sacarValorEstrella(2)" type="radio" id="star4" name="rating" value="2" /><label class="full" for="star4"></label>
+                            <input (click)="sacarValorEstrella(1)" type="radio" id="star5" name="rating" value="1" /><label class="full" for="star5"></label>
+                        </fieldset>
+
+                        <label class="label-form" for="area">Puedes ampliar tu valoración con un comentario: </label>
+                        <textarea id="area" class="input-form" ngModel name="observacion" rows="10" cols="50">Escribe aquí</textarea>
+                    </div>
+                    <div class="modal-footer" id="insert">
+
+                        <button type="button" style=" background-color: rgb(208, 205, 255); color: #5348FF; margin-top: -0.2em;" id="CerrarModal" class="button col-4" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" style="background-color: #5348FF; color: white; margin-top: -0.2em;" class="button col-5">Enviar valoración</button>
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</main>

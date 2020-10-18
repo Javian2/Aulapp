@@ -1,0 +1,42 @@
+<app-navbar-panelusuario></app-navbar-panelusuario>
+
+<div #content class="row mt-5 ml-5 mr-2 animated fadeIn">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 style="font-weight: 600; font-size: 21px;"class="card-title text-center mt-2">Historial de pagos</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="tableSortExample">
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Concepto</th>
+                                <th>Importe</th>
+                                <th>Estado</th>
+                            </tr>
+                            <tr>
+                                <td>12/02/2019</td>
+                                <td>Clase de Matemáticas con Pedro Duque Jiménez</td>
+                                <td>16,00 €</td>
+                                <td class="enproces">EN PROCESO</td>
+                            </tr>
+                            <tr>
+                                <td>15/12/2019</td>
+                                <td>Clase de Estadística para Ingeniería Multimedia con Violeta Martínez Hernández</td>
+                                <td>12,00 €</td>
+                                <td class="completado">COMPLETADO</td>
+                            </tr>
+                            <tr>
+                                <td>02/10/2019</td>
+                                <td>Clase de Sistemas Operativos con Leandro Tortilla Martínez</td>
+                                <td>8,00 €</td>
+                                <td class="completado">COMPLETADO</td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn" (click)="downloadPDF()">Exportar a PDF</button>
+</div>

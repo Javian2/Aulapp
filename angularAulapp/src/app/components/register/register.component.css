@@ -1,0 +1,119 @@
+
+
+#checks{
+    font-size: 13px;
+}
+    #politica{
+        text-decoration: underline;
+    }
+
+#checks2{
+    color: #515FC9;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+
+.card{
+    margin: auto;
+    align-self: center;
+    padding-top: 2em;
+}
+
+.text-danger{
+    font-size: 80%;
+}
+
+#contra{
+    display: flex;
+    flex-direction: row;
+}
+
+.fa {
+    color: black;
+    padding-top: 10px;
+    font-size: 115%;
+  }
+
+.text-dark{
+    font-weight: 600;
+}
+
+#reco{
+    font-size: 80%;
+}
+
+
+  .tabs {
+    max-width: 310px;
+    display: -webkit-box;
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
+    padding: 0.35rem;
+    border-radius: 10px;
+    color: #515fc9; 
+    margin: auto;
+  }
+  .tabs * {
+    
+  }
+  
+  input[type="radio"] {
+    display: none;
+    
+  }
+  
+  .tab {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    height: 20px;
+    width: 150px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    padding-top: 10px;
+    cursor: pointer;
+    -webkit-transition: color 0.15s ease-in;
+    transition: color 0.15s ease-in;
+   
+  }
+
+  
+  input[type="radio"]:checked + label {
+    color: white;
+    z-index: 5;
+  }
+  
+  input[id="radio-1"]:checked ~ .glider {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+            
+  }
+  
+  input[id="radio-2"]:checked ~ .glider {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+  }
+  
+  .glider {
+    position: absolute;
+    display: -webkit-box;
+    display: flex;
+    height: 30px;
+    padding-bottom: 20px;
+    width: 150px;
+    color: white;
+    background-image: linear-gradient(-20deg, #5446d5 0%, #986ce8 100%);
+    z-index: 0;
+    border-radius: 6px;
+    -webkit-transition: 0.25s ease-out;
+    transition: 0.25s ease-out;
+  }
+  
+ 

@@ -1,0 +1,17 @@
+{
+  "name": "webgl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "gl-buffer": "^2.1.2",
+    "gl-matrix": "^3.2.1",
+    "glslify": "^7.0.0"
+  }
+}

@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header">
+                <h4 class="card-title"> Asignaturas</h4>
+                <button class="btn btn-info btn-fab btn-icon btn-round" [routerLink]="['../crear-asig']"><i class="fas fa-plus m-1"></i> A&ntilde;adir</button>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Buscador" id="buscador" #texto (keyup)="setDesde(0);" (keyup)="buscarAsig(texto.value);" name="filterUsu" [(ngModel)]=" filterUsu">
+                </div>
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="">
+                        <thead *ngIf="!filterUsu; else vacio2" class=" text-primary">
+                            <tr>
+                                <th ng-for scope="col" [mdbTableSort]="this.asignaturas" sortBy="id">Id asignatura
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.asignaturas" sortBy="nombre">Nombre asignatura
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col">Edit </th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <ng-template #vacio2>
+                            <tr>
+                                <th ng-for scope="col" [mdbTableSort]="this.MBusquedaAsig" sortBy="id">Id asignatura
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.MBusquedaAsig" sortBy="nombre">Nombre asignatura
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col">Edit </th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </ng-template>
+                        <tbody *ngIf="!filterUsu; else vacio">
+                            <tr *ngFor="let asignatura of asignaturas">
+                                <td>{{asignatura.id}}</td>
+                                <td>{{asignatura.nombre}}</td>
+                                <td><button class="btn btn-warning btn-block" [routerLink]="['../edit-asig', asignatura.id]">Editar</button></td>
+                                <td><button (click)="deleteAsignatura(asignatura.id)" class="btn btn-danger btn-block">Borrar</button></td>
+                            </tr>
+                            <span class="badge badge-light">Página actual: {{(desde/6)+1}}</span>
+                        </tbody>
+                        <ng-template #vacio>
+                            <tr *ngFor="let asignatura of MBusquedaAsig">
+                                <td>{{asignatura.id}}</td>
+                                <td>{{asignatura.nombre}}</td>
+                                <td><button class="btn btn-warning btn-block" [routerLink]="['../edit-asig', asignatura.id]">Editar</button></td>
+                                <td><button (click)="deleteAsignatura(asignatura.id)" class="btn btn-danger btn-block">Borrar</button></td>
+                            </tr>
+                            <span class="badge badge-light">Página actual: {{(desde/6)+1}}</span>
+                        </ng-template>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="p" class="mt-5 mb-5">
+            <button (click)="setDesde(0)" class="btn btn-info float-lg-left">Primero</button>
+            <button (click)="cambiarDesde(-6)" class="btn btn-info float-lg-left">Anterior</button>
+            <div *ngFor="let tot of botones">
+                <button (click)="setDesde(tot*6)" class="btn btn-info">{{tot+1}}</button>
+            </div>
+            <button (click)="cambiarDesde(+6)" class="btn btn-info float-lg-right">Siguiente</button>
+            <button (click)="setDesde((asigtotalEntero*6)-6)" class="btn btn-info float-lg-left">Último({{totEntero}})</button>
+        </div>
+    </div>
+
+</div>

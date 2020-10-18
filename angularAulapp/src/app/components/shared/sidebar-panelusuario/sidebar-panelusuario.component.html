@@ -1,0 +1,19 @@
+
+<div *ngIf="user && user.foto" id="mySidenav" class="sidenav ">
+    <img [src]="user.foto | imagen" class="card-img rounded-circle" alt="...">
+    <div class="texto">
+        Bienvenido,<br>
+        <span>{{user.nombre}} {{user.apellidos}}</span>
+        <p *ngIf="para==true">Profesor</p>
+        <p *ngIf="para==false">Alumno</p>
+        <div *ngIf="variableFecha">
+            <button (click)="crearLog();" class="button" id="clase" [routerLink]="['/panel-usuario/videoconferencia']">Acceder a la clase con {{nombrevariable}}</button><br>
+        </div>
+        <div *ngIf="variableFecha == false && variableFechaAlumno == false">
+            <p class="notif">Ninguna clase disponible en estos momentos</p>
+        </div>
+        <div *ngIf="variableFechaAlumno">
+            <button (click)="crearLog();" class="button"  id="clase" [routerLink]="['/panel-usuario/videoconferencia']">Acceder a la clase con {{nombrevariable}}</button><br>
+        </div>
+    </div>
+</div>

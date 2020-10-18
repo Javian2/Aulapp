@@ -1,0 +1,201 @@
+<app-navbar-panelusuario></app-navbar-panelusuario>
+
+
+<!-- CUANDO ES PROFESOR -->
+<ngcontainer *ngIf="esProfe==true">
+    <ul class="nav nav-pills m-3 pills-rounded animated fadeIn" id="pills-tab" role="tablist">
+        <li class="nav-item">
+            <span *ngIf="numeroPendientes > 0" class="notification">{{numeroPendientes}}</span>
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendientes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Aceptadas</a>
+
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Rechazadas</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="pills-contact2-tab" data-toggle="pill" href="#pills-contact2" role="tab" aria-controls="pills-contact2" aria-selected="false">Mis solicitudes</a>
+        </li>
+    </ul>
+
+    <div class="tab-content pt-2 pl-1 mb-5 animated fadeIn" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="container">
+                <h2 class="text-center">Solicitudes pendientes</h2>
+                <div class="row text-center mt-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let reserva of resPendientes; let i = index;">
+                        <div class="card bg-light mb-2">
+                            <div class="title">
+                                Reserva {{i+1}}
+                            </div>
+                            <div class="card-body">
+                                <div class="desc" *ngFor="let users of usuarios">
+                                    <h5 *ngIf="reserva.idusuario == users.id">Alumno: {{users.nombre}}</h5>
+                                </div>
+                                <div class="desc" *ngFor="let imparte of impartesMios">
+                                    <h5 *ngIf="imparte.id == reserva.idimparte">Asignatura: {{ imparte.nombreAsignatura }}</h5>
+                                </div>
+                                <hr>
+                                <h6><i class="far fa-calendar"></i> {{ reserva.fecha_inicio | date : 'd-MM-yyy HH:mm':'UTC +0' }}</h6>
+                                <p class="cta">"{{reserva.observacion}}"</p>
+                            </div>
+                            <div class="estado">Estado: <i>{{reserva.estado}}</i>
+                                <button class="btn-aceptar" (click)="aceptarReserva(reserva.id, reserva.idusuario, reserva.idimparte)">Aceptar</button>
+                                <button class="btn-rechazar" (click)="rechazarReserva(reserva.id, reserva.idusuario, reserva.idimparte)">Rechazar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vacio" *ngIf="numeroPendientes==0">
+                    <img src="../../../../assets/img/_2x.png" width="330px" height="auto" style="margin-bottom: 2em;">
+                    <p class="titulo">¡Ups!</p>
+                    <p class="descripcion">No tienes ninguna solicitud de clase pendiente.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <div class="container">
+                <h2 class="text-center">Solicitudes aceptadas</h2>
+                <div class="row text-center mt-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let reserva of resAceptadas; let i = index;">
+                        <div class="card bg-light mb-2">
+                            <div class="title">
+                                Reserva {{i+1}}
+                            </div>
+                            <div class="card-body">
+                                <div class="desc" *ngFor="let users of usuarios">
+                                    <h5 *ngIf="reserva.idusuario == users.id">Alumno: {{users.nombre}}</h5>
+                                </div>
+                                <div class="desc" *ngFor="let imparte of impartesMios">
+                                    <h5 *ngIf="imparte.id == reserva.idimparte">Asignatura: {{ imparte.nombreAsignatura }}</h5>
+                                </div>
+                                <hr>
+                                <h6><i class="far fa-calendar"></i> {{ reserva.fecha_inicio | date : 'd-MM-yyy HH:mm':'UTC +0' }}</h6>
+                                <p class="cta">"{{reserva.observacion}}"</p>
+                            </div>
+                            <div class="estado">Estado: <i>{{reserva.estado}}</i></div>
+                            <button class="btn" *ngIf="reserva.estado!='pagada'" (click)="rechazarReserva(reserva.id, reserva.idusuario, reserva.idimparte)">Cancelar reserva</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="vacio" *ngIf="resAceptadas.length==0">
+                    <img src="../../../../assets/img/_2x.png" width="330px" height="auto" style="margin-bottom: 2em;">
+                    <p class="titulo">¡Ups!</p>
+                    <p class="descripcion">No has aceptado ninguna clase.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <div class="container">
+                <h2 class="text-center">Solicitudes rechazadas</h2>
+                <div class="row text-center mt-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let reserva of resRechazadas; let i = index;">
+                        <div class="card bg-light mb-2">
+                            <div class="title">
+                                Reserva {{i+1}}
+                            </div>
+                            <div class="card-body">
+                                <div class="desc" *ngFor="let users of usuarios">
+                                    <h5 *ngIf="reserva.idusuario == users.id">Alumno: {{users.nombre}}</h5>
+                                </div>
+                                <div class="desc" *ngFor="let imparte of impartesMios">
+                                    <h5 *ngIf="imparte.id == reserva.idimparte">Asignatura: {{ imparte.nombreAsignatura }}</h5>
+                                </div>
+                                <hr>
+                                <h6><i class="far fa-calendar"></i> {{ reserva.fecha_inicio | date : 'd-MM-yyy HH:mm':'UTC +0' }}</h6>
+                                <p class="cta">"{{reserva.observacion}}"</p>
+                            </div>
+                            <div class="estado">Estado: <i>{{reserva.estado}}</i>
+                                <i style="margin-left: 1em; cursor: pointer;" (click)="eliminarReserva(reserva.id)" class="fas fa-trash"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vacio" *ngIf="resRechazadas.length==0">
+                    <img src="../../../../assets/img/_2x.png" width="330px" height="auto" style="margin-bottom: 2em;">
+                    <p class="titulo">¡Bien!</p>
+                    <p class="descripcion">No has rechazado ninguna clase.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade show" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact2-tab">
+            <div class="container">
+                <h2 class="text-center">Mis solicitudes</h2>
+                <div class="row text-center mt-4">
+                    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let reservas of resvar; let i = index;">
+                        <div class="card bg-light mb-2">
+                            <div class="title">
+                                Reserva {{i+1}}
+                            </div>
+                            <div class="card-body">
+                                <div class="desc" *ngFor="let imparte of impartes">
+                                    <h5 *ngIf="imparte.id == reservas.idimparte">Profesor: {{ imparte.nombreProfesor }}</h5>
+                                    <h5 *ngIf="imparte.id == reservas.idimparte">Asignatura: {{ imparte.nombreAsignatura }}</h5>
+                                </div>
+                                <hr>
+                                <h6><i class="far fa-calendar"></i> {{ reservas.fecha_inicio | date : 'd-MM-yyy HH:mm':'UTC +0' }}</h6>
+                                <p class="cta">"{{reservas.observacion}}"</p>
+                            </div>
+                            <div class="estado">Estado: <i>{{reservas.estado}}</i>
+                                <button *ngIf="reservas.estado!='pagada' && !caducada(reservas)" class="btn" (click)="cancelarReserva(reservas.id)">Cancelar reserva</button>
+                                <button *ngIf="reservas.estado!='pagada' && caducada(reservas)" class="btn btn-disabled" (click)="cancelarReserva(reservas.id)">Cancelar reserva</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vacio" *ngIf="resvar.length==0">
+                    <img src="../../../../assets/img/_2x.png" width="330px" height="auto" style="margin-bottom: 2em;">
+                    <p class="titulo">¡Ups!</p>
+                    <p class="descripcion">No has solicitado clase con ningún profesor.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ngcontainer>
+
+
+
+
+<!-- CUANDO ERES ALUMNO -->
+
+<ngcontainer *ngIf="esProfe!=true">
+    <div class="tab-pane fade show active" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact2-tab">
+        <div class="container">
+            <h2 class="text-center">Mis solicitudes</h2>
+            <div class="row text-center mt-4">
+                <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let reservas of resvar; let i = index;">
+                    <div class="card bg-light mb-2">
+                        <div class="title">
+                            Reserva {{i+1}}
+                        </div>
+                        <div class="card-body">
+                            <div class="desc" *ngFor="let imparte of impartes">
+                                <h5 *ngIf="imparte.id == reservas.idimparte">Profesor: {{ imparte.nombreProfesor }}</h5>
+                                <h5 *ngIf="imparte.id == reservas.idimparte">Asignatura: {{ imparte.nombreAsignatura }}</h5>
+                            </div>
+                            <hr>
+                            <h6><i class="far fa-calendar"></i> {{ reservas.fecha_inicio | date : 'd-MM-yyy HH:mm':'UTC +0' }}</h6>
+                            <p class="cta">"{{reservas.observacion}}"</p>
+                        </div>
+                        <div class="estado">Estado: <i>{{reservas.estado}}</i>
+                            <button *ngIf="reservas.estado!='pagada' && !caducada(reservas)" class="btn" (click)="cancelarReserva(reservas.id)">Cancelar reserva</button>
+                            <button *ngIf="reservas.estado!='pagada' && caducada(reservas)" class="btn btn-disabled" (click)="cancelarReserva(reservas.id)">Cancelar reserva</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="vacio" *ngIf="resvar.length==0">
+                <img src="../../../../assets/img/_2x.png" width="330px" height="auto" style="margin-bottom: 2em;">
+                <p class="titulo">¡Ups!</p>
+                <p class="descripcion">No has solicitado clase con ningún profesor.</p>
+            </div>
+        </div>
+    </div>
+
+</ngcontainer>

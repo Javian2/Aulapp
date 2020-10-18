@@ -1,0 +1,62 @@
+.sidenav {
+    height: 100%;
+    width: 320px;
+    background-color: rgb(245, 245, 245);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 100px;
+}
+
+#clase{
+    margin-top: 3em;
+    background-color: #515FC9;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+
+
+.texto {
+    margin-left: 2em;
+    margin-top: 2em;
+    color: #212536;
+    font-weight: 500;
+    font-size: 20px;
+    margin-right: 2em;
+}
+
+span {
+    font-weight: 700;
+    font-size: 26px;
+}
+
+.notif{
+    margin-top: 3em;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 15px;
+    color: #757A99;
+}
+
+.texto>p {
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: #515FC9;
+    font-size: 18px;
+}
+
+img {
+    width: 15em;
+    height: 15em;
+    margin-left: 2.5em;
+}
+
+
+#datos {
+    font-size: 16px;
+    margin-left: 1em;
+}
+
+
+

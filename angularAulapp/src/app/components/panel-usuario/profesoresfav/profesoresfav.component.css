@@ -1,0 +1,107 @@
+h5{
+    font-weight: 500;
+    font-size: 16px;
+    color: #7E7E7E;
+    margin-bottom: 2em;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 3em;
+    padding-top: 2em;
+}
+
+
+
+.card {
+    min-width: 150px;
+    height: 250px;
+    background: #f5f5f5;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    padding: 1em;
+    border-radius: 5px;
+    text-align: center;
+    border: none;
+    align-items: center;
+    margin: 2em;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+    transition: 1s;
+}
+
+
+.card-title {
+    font-weight: 600;
+    font-size: 18px;
+    color: #48465B;
+    margin-bottom: 5px;
+}
+
+
+.card-text {
+    color: #757A99;
+    font-size: 15px;
+}
+
+
+.card-img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 1em;
+    align-content: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-deck {
+    max-width: 1050px;
+    position: center;
+    align-items: center;
+}
+
+.card-group {
+    height: 50%;
+    width: 50%;
+    background: #f5f5f5;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+#cartaResultado {
+    background: #f5f5f5;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-footer {
+    background: #dcdcdc;
+    width: 100%;
+}
+
+
+.circle {
+    position: absolute;
+    background-color: red;
+    text-align: center;
+    border-radius: 12px;
+    padding-bottom: 22px;
+    min-width: 18px;
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 22px;
+    padding-top: 3px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 17px;
+    left: 12rem;
+    top: 7.5rem
+}
+
+.circle:hover{
+    opacity: 0.5;
+    transition: 300ms;
+}

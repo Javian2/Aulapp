@@ -1,0 +1,92 @@
+img {
+    width: 50px;
+    height: 50px;
+}
+
+.card {
+    color: rgb(22, 22, 22);
+    width: 95%;
+    margin-left: 2em;
+}
+
+th {
+    color: rgb(22, 22, 22);
+    cursor: pointer;
+}
+
+td {
+    color: rgb(22, 22, 22);
+}
+
+#p {
+    display: flex;
+}
+
+.btn-perfil {
+    margin-top: -0.7em;
+    background-color: #515FC9;
+    border-radius: 10px;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-bottom: 0.4em;
+    padding-top: 0.4em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-color: transparent;
+}
+
+.btn-perfil:hover {
+    color: #515FC9;
+    background-color: white;
+    transition: 300ms;
+}
+
+button {
+    margin-top: 20px;
+}
+
+#cuatro {
+    margin-top: -0.7em;
+    border: 2px solid rgb(245, 56, 56);
+    background-color: rgb(245, 56, 56);
+    border-radius: 10px;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-bottom: 0.4em;
+    padding-top: 0.4em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-color: transparent;
+}
+
+#cuatro:hover {
+    color: rgb(245, 56, 56);
+    background-color: white;
+    transition: 300ms;
+}
+
+.nav {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    width: 267px;
+    height: 44px;
+    border-radius: 5px;
+    padding-left: 3px;
+}
+
+.nav-item a {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    color: rgb(66, 66, 66);
+    margin-top: 4px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    background-color: #515FC9;
+    color: white;
+}

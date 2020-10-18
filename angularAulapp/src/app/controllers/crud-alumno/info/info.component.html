@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-8">
+              <div class="card card-user">
+                <div class="card-body">
+                    <div class="col-sm-6 text-left">
+                    <h5 class="card-category"> <a id="atras" [routerLink]="['/admin/crud-usuario']"><i class="fas fa-chevron-left"></i> Atrás </a></h5>
+                    <h2 class="card-title">Información de usuario</h2>
+                </div>
+                  <p class="card-text">
+                    <div class="author">
+                        <img class="avatar" [src]="usu.foto | imagen" alt="...">
+                        <h5 class="title">{{usu.nombre}} {{usu.apellidos}}</h5>
+                     
+                     
+                  <div class="card-description">
+                    {{usu.descripcion}}
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <div class="button-container">
+                    <p>Email: {{usu.email}}</p>
+                    <p>Fecha de nacimiento: {{usu.fecha_nacimiento}}</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="card card-user mt-5">
+            <h2 class="card-title mt-3">Acciones realizadas</h2>
+            <div class="table-responsive">
+              <table class="table tablesorter " id="">
+                <thead class=" text-primary">
+                  <tr>
+                      <th>Id usuario</th>
+                      <th>Ip del usuario</th>
+                      <th>Acción</th>
+                      <th>Fecha</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let logs of varlogs">
+                      <td>{{logs.idUsuario}}</td>
+                      <td>{{logs.ip}}</td>
+                      <td>{{logs.log}}</td>
+                      <td>{{logs.createdAt}}</td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </div>
+</div>
+         

@@ -1,0 +1,108 @@
+<div class="row">
+    <div *ngIf="alumnos!=null && alumno!=null" class="col-md-12">
+        <div class="card ">
+            <div class="card-header">
+                <h4 class="card-title"> Alumnos</h4>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Buscador" id="buscador" #texto (keyup)="setDesde(0);" (keyup)="buscarAlu(texto.value);" name="filterUsu" [(ngModel)]=" filterUsu">
+                </div>
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table tablesorter " id="">
+                        <thead *ngIf="!filterUsu; else vacio2" class=" text-primary">
+                            <tr>
+                                <th ng-for scope="col" [mdbTableSort]="this.alumno" sortBy="id">Id Usuario
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.alumnos" sortBy="id">Id Alumno
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.alumno" sortBy="nombre">Nombre
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.alumno" sortBy="apellidos">Apellidos
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.alumno" sortBy="fecha_nacimiento">Fecha
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                                <th scope="col">Info</th>
+                            </tr>
+                        </thead>
+                        <ng-template #vacio2>
+                            <tr>
+                                <th ng-for scope="col" [mdbTableSort]="this.MBusquedaAlum" sortBy="id">Id Usuario
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.MBusquedaAlum" sortBy="id">Id Alumno
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.MBusquedaAlum" sortBy="nombre">Nombre
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.MBusquedaAlum" sortBy="apellidos">Apellidos
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col" [mdbTableSort]="this.MBusquedaAlum" sortBy="fecha_nacimiento">Fecha
+                                    <mdb-icon fas icon="sort"></mdb-icon>
+                                </th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                                <th scope="col">Info</th>
+                            </tr>
+                        </ng-template>
+                        <tbody *ngIf="!filterUsu; else vacio">
+                            <ng-container *ngFor="let alu of alumnos ">
+                                <tr *ngFor="let alumno of alumno">
+                                    <ng-container *ngIf="alumno.id==alu.idUsuario">
+                                        <td>{{alumno.id}}</td>
+                                        <td>{{alu.id}}</td>
+                                        <td>{{alumno.nombre}}</td>
+                                        <td>{{alumno.apellidos}}</td>
+                                        <td>{{alumno.fecha_nacimiento}}</td>
+                                        <td><button class="btn btn-warning btn-block" [routerLink]="['../edit-user', alumno.id]">Editar</button></td>
+                                        <td><button (click)="deleteAlumno(alumno.id)" class="btn btn-danger btn-block">Borrar</button></td>
+                                        <td><button class="btn btn-info btn-block" [routerLink]="['../info', alumno.id]">Info</button></td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                            <span class="badge badge-light">Página actual: {{(desde/6)+1}}</span>
+                        </tbody>
+                        <ng-template #vacio>
+                            <ng-container *ngFor="let alu of BAlumno">
+                                <tr *ngFor="let alumno of MBusquedaAlum">
+                                    <ng-container *ngIf="alumno.id==alu.idUsuario">
+                                        <td>{{alumno.id}}</td>
+                                        <td>{{alu.id}}</td>
+                                        <td>{{alumno.nombre}}</td>
+                                        <td>{{alumno.apellidos}}</td>
+                                        <td>{{alumno.fecha_nacimiento}}</td>
+                                        <td><button class="btn btn-warning btn-block" [routerLink]="['../edit-user', alumno.id]">Editar</button></td>
+                                        <td><button (click)="deleteAlumno(alu.id)" class="btn btn-danger btn-block">Borrar</button></td>
+                                        <td><button class="btn btn-info btn-block" [routerLink]="['../info', alumno.id]">Info</button></td>
+                                    </ng-container>
+                                </tr>
+                            </ng-container>
+                            <span class="badge badge-light">Página actual: {{(desde/6)+1}}</span>
+                        </ng-template>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div id="p" class="mt-5 mb-5">
+            <button (click)="setDesde(0)" class="btn btn-info float-lg-left">Primero</button>
+            <button (click)="cambiarDesde(-6)" class="btn btn-info float-lg-left">Anterior</button>
+            <div *ngFor="let tot of botones">
+                <button (click)="setDesde(tot*6)" class="btn btn-info">{{tot+1}}</button>
+            </div>
+            <button (click)="cambiarDesde(+6)" class="btn btn-info float-lg-right">Siguiente</button>
+            <button (click)="setDesde((alumnostotalEntero*6)-6)" class="btn btn-info float-lg-left">Último({{totEntero}})</button>
+        </div>
+    </div>
+
+</div>

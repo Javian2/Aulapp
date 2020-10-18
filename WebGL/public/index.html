@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>WebGL</title>
+
+    <script src="https://webgl2fundamentals.org/webgl/resources/m4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gl-matrix@3.2.1/gl-matrix-min.js"></script>
+    <script src="main.js" defer></script>
+    <script src="Nodo.js"></script>
+    <script src="Recurso.js"></script>
+    <script src="TMotorTAG.js"></script>
+
+</head>
+
+<body>
+    <h1>WebGL!!</h1>
+    <div id="mydiv">
+        <div id="mydivheader">Click here to move</div>
+        <div>
+            <h4>Qu&iacute;mica:</h4>
+            <button onclick="modelos('Atomo_Textura.json', 'Colores.png');">&Aacute;tomo </button>
+            <button onclick="modelos('CafeinaT.json', 'Colores.png');">Cafeina</button>
+            <button onclick="modelos('AguaT.json', 'Colores.png');">Agua</button>
+            <button onclick="modelos('AcetonaT.json', 'Colores.png');">Acetona</button>
+            <button onclick="modelos('MetanoT.json', 'Colores.png');">Metano</button>
+            <button onclick="modelos('NitroglicerinaT.json', 'Colores.png');">Nitroglicerina</button>
+            <button onclick="modelos('AnfetaminaT.json', 'Colores.png');">Anfetamina</button>
+        </div>
+        <div>
+            <h4>Geometr&iacute;a:</h4>
+            <button onclick="modelos('Anillo_Textura.json', 'Color_Oro.jpg');">Anillo</button>
+            <button onclick="modelos('Cilindro_Textura.json', 'Colores.png');">Cilindro</button>
+            <button onclick="modelos('Cono_Textura.json', 'Colores.png');">Cono</button>
+            <button onclick="modelos('Cubo_Textura.json', 'Texturas2.jpg');">Cubo</button>
+            <button onclick="modelos('Esfera_Textura.json', 'Colores.png');">Esfera</button>
+            <div>
+                <button onclick="modelos('Icosaedro_Textura.json', 'Colores.png');">Icosaedro</button>
+                <button onclick="modelos('Piramide_Pentagonal_Textura.json', 'Colores.png');">Piramide Pentagonal</button>
+                <button onclick="modelos('Piramide_Triangular_Textura.json', 'Colores.png');">Piramide Triangular</button>
+                <button onclick="modelos('Prisma_Hexagonal_Textura.json', 'Colores.png');">Prisma Hexagonal</button>
+                <button onclick="modelos('Prisma_Pentagonal_Textura.json', 'Colores.png');">Prisma Pentagonal</button>
+                <button onclick="modelos('Prisma_Triangular.json', 'Colores.png');">Prisma Triangular</button>
+
+            </div>
+        </div>
+
+
+        <div>
+            <h4>Geograf&iacute;a:</h4>
+            <button onclick="modelos('Mundo_Textura.json', 'mundo.png');">Globo Terr&aacute;queo</button>
+            <button onclick="modelos('Puente_Textura.json', 'piedra2.jpg');">Puente</button>
+            <button onclick="modelos('TorreEiffiel.json', 'Plata.jpg');">Torre Eiffiel</button>
+            <button onclick="modelos('relieveTextura.json', 'relieve_textura.png');">Mapa relieve</button>
+            <button onclick="modelos('TorrePisa.json', 'marmol.jpg');">Torre de Pisa</button>
+            <button onclick="modelos('Coliseo.json', 'piedrablanca.jpg');">Coliseo Romano</button>
+            <button onclick="modelos('Acueducto.json', 'piedra4.jpg');">Acueducto</button>
+            <button onclick="modelos('Catedral.json', 'marmol.jpg');">Catedral</button>
+
+        </div>
+
+        <div>
+            <h4>Biolog&iacute;a: </h4>
+            <button onclick="modelos('ADN.json', 'Colores.png');">ADN</button>
+            <button onclick="modelos('Men.json', 'carne.jpg');">Cuerpo Humano</button>
+            <button onclick="modelos('lungs.json', 'pulmonesT.jpg');">Pulmones</button>
+            <button onclick="modelos('heart.json', 'heartT2.png');">Corazón</button>
+        </div>
+
+        <div>
+            <h4>Tecnolog&iacute;a</h4>
+            <button onclick="modelos('Gear_Textura.json', 'Plata.jpg');">Engranajes</button>
+            <button onclick="modelos('figura.json', 'Colores.png');">Vistas</button>
+
+        </div>
+
+        <div>
+            <h4>Objetos</h4>
+            <button onclick="modelos('Gafas.json', 'negro.jpg');">Gafas</button>
+        </div>
+
+
+        <canvas id="glCanvas" width="700" height="500"></canvas>
+    </div>
+    <h2>Modelos</h2>
+    <button onclick="abrirEntorno();">Abrir entorno</button>
+
+    <h2>Acciones</h2>
+
+    <button onclick="cerrarModelos();">Cerrar</button>
+    <!--  <button onclick="animarModelos();">Animar Modelos</button> -->
+
+    <h2>Giros</h2>
+
+    <button onclick="girarModeloDerecha();">Girar Derecha</button>
+    <button onclick="girarModeloIzquierda();">Girar Izquierda</button>
+    <button onclick="girarModeloAbajo();">Girar Abajo</button>
+    <button onclick="girarModeloArriba();">Girar Arriba</button>
+
+
+    <p>Intensidad de la luz:</p>
+    <input oninput="cambiarLuz(value);" type="range" min="0" max="100" value="50">
+    <p>Posición de la luz:</p>
+    <input oninput="posicionarLuz(value);" type="range" min="-100" max="100" value="0">
+
+    <button onclick="alejar();">-</button>zoom<button onclick="acercar();">+</button>
+
+
+    <!-- Hacer que se mueva el div -->
+
+    <script>
+        //Make the DIV element draggagle:
+        dragElement(document.getElementById("mydiv"));
+
+        function dragElement(elmnt) {
+            var pos1 = 0,
+                pos2 = 0,
+                pos3 = 0,
+                pos4 = 0;
+            if (document.getElementById(elmnt.id + "header")) {
+                /* if present, the header is where you move the DIV from:*/
+                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            } else {
+                /* otherwise, move the DIV from anywhere inside the DIV:*/
+                elmnt.onmousedown = dragMouseDown;
+            }
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // get the mouse cursor position at startup:
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // calculate the new cursor position:
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // set the element's new position:
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                /* stop moving when mouse button is released:*/
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

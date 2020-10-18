@@ -1,0 +1,60 @@
+    <div class="container">
+      <a id="atras" *ngIf="gestionarCuenta == true" [routerLink]="['/panel-usuario/gestionar-cuenta']"><i class="fas fa-chevron-left"></i> Atrás </a>
+      <h4 (click)="mostrarVectores();" class="card-title mt-5">Gestiona tus asignaturas</h4>
+
+      <div class="row">
+        <div class="col-md-11 mt-lg-5 text-center">
+          <h2>¿De qué quieres ser profesor?</h2>
+          <h1></h1>
+        </div>
+      </div>
+
+      <!-- Estas son las asignaturas ya elegidas, las que salen en morado arriba del todo --> 
+
+      <div class="row" id="badges">
+        <div class="row" *ngFor="let badge of nombreAsignaturasElegidas; let i">
+          <span id="badgeIndividual" class="trigger text-white">{{badge}}
+            <i class="fas fa-times mx-1" (click)="borrarNombreVector(badge)"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col">
+          <div class="form-group">
+            <input #sacarValue (keyup)="noExiste(sacarValue.value)" type="text" class="form-control" name="filterPost" placeholder="Busca asignaturas" [(ngModel)]="filterPost">
+          </div>
+        </div>
+      </div>
+
+      
+
+      <div class="row">
+
+        <!-- Estas son las asignaturas que salen al realizar la búsqueda -->
+
+        <div class="row" *ngFor="let asig of asignaturas| filter:filterPost">
+          <span role="button" tabindex="0" (keyup.enter)="vectorNombresAsignaturas(asig.nombre)" (keyup.enter)="vectorIdsAsignaturas(asig.id)" id="badgeIndividual2" class="trigger text-white">{{asig.nombre}}
+            <i class="fas fa-plus-circle" (click)="vectorNombresAsignaturas(asig.nombre)" (click)="vectorIdsAsignaturas(asig.id)"></i>
+          </span>
+        </div>
+
+        <!-- Esta es la asignatura que estás metiendo tú en el momento  -->
+
+        <span role="button" tabindex="0" (keyup.enter)="anadirAsignatura(sacarValue.value)" id="badgeIndividual3" *ngIf="noExisteAsignatura"class="trigger text-white">{{noExisteAsignatura}}
+          <i class="fas fa-plus-circle" (click)="anadirAsignatura(sacarValue.value);"></i>
+        </span>
+      </div>
+
+      <div id="finalizar" class="row mt-5">
+        <div id="containerFlex" class="col-md-12 mt-5 mb-4">
+          <button id="botonFinalizar" type="button" (click)="crearImparte();" class="btn btn-primary">Finalizar</button>
+          <h5 *ngIf="gestionarCuenta == false" class="card-category"><a id="omitir" [routerLink]="['/register']"> Omitir paso </a><i
+            class="fas fa-chevron-right"></i></h5>
+          <!-- <button type="button" (click)="saltarPaso();" class="btn btn-primary float-left">Omitir</button> -->
+        </div>
+      </div>
+
+
+
+     

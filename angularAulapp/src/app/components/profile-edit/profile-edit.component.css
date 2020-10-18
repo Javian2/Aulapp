@@ -1,0 +1,45 @@
+img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+h2{
+    text-align: center;
+}
+
+#b{
+    background-color: #E2E2E2;
+    color: #1A1A1A;
+}
+    #b:hover{
+        color: #1A1A1A;
+        text-decoration: none; 
+    }
+
+.btn-contra{
+    background-color: rgb(208, 205, 255);
+    color: #5348FF;
+    margin-left: -1em;
+    
+}
+
+#email:focus{
+  border-color: #5348FF;
+}
+
+#nombre:focus{
+    border-color: #5348FF;
+  }
+
+  #apellidos:focus{
+    border-color: #5348FF;
+  }
+
+  #fecha:focus{
+    border-color: #5348FF;
+  }
+
+  #descripcion:focus{
+    border-color: #5348FF;
+  }

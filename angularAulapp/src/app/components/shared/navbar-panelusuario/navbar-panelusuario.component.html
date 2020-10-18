@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-xl">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+      </button>
+    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+        <div class="navbar-nav text-left ml-3">
+            <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['/panel-usuario/gestionar-cuenta']">Gestionar cuenta<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['/panel-usuario/solicitudes']">Solicitudes</a>
+            <ngcontainer *ngIf="numeroPendientes > 0">
+                <span *ngIf="esProfe==true" class="notification">{{numeroPendientes}}</span>
+            </ngcontainer>
+            <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['/panel-usuario/facturas']">Facturas</a>
+            <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['/panel-usuario/historial']">Historial</a>
+            <a class="nav-item nav-link" routerLinkActive="active" [routerLink]="['/panel-usuario/profesoresfav']">Profesores favoritos</a>
+        </div>
+    </div>
+</nav>

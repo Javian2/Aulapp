@@ -1,0 +1,78 @@
+.grid {
+    display: grid;
+    grid-template-areas: "primera segunda tercera";
+}
+
+.a {
+    grid-area: segunda;
+    text-align: center;
+    color: rgb(124, 121, 148);
+    margin-top: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    margin-left: 1em;
+}
+
+
+
+.b {
+    margin-top: 18px;
+    grid-area: tercera;
+    color: #48465B;
+    text-align: center;
+    font-weight: 500;
+}
+
+.b>a {
+    padding: 10px;
+    color: #48465B;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.c {
+    grid-area: primera;
+    text-align: center;
+    color: #48465B;
+    margin-bottom: 12px;
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.c>a {
+    text-decoration: none;
+    color: #48465B;
+    font-weight: 500;
+    font-size: 14;
+}
+
+.c>p{
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.b>p{
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+
+.c>a{
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s linear;
+    text-decoration: none;
+    color: #48465B;
+    font-size: 14px;
+    font-weight: 500;
+    
+}
+footer {
+    box-shadow: 0px -2px 16px rgba(0, 0, 0, 0.05);
+    align-self: flex-end;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+    background-color:#ebebeb;
+    padding-bottom: 1em;
+}

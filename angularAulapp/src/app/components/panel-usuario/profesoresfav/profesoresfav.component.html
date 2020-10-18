@@ -1,0 +1,17 @@
+<app-navbar-panelusuario></app-navbar-panelusuario>
+<div class="container">
+    <div id="resultado mt-4 mb-4 animated fadeIn">
+        <h2 class="text-center">Profesores favoritos</h2>
+        <div id="resultadoProfe" class="row text-center">
+            <div class="col-lg-4 col-sm-5" *ngFor="let usu of usuarios">
+                <div id="cartaResultado" class="card border-dark m-2 animated fadeIn">
+                    <span (click)="borrarfav(usu.id)" class="circle"><i class="fas fa-heart"></i></span>
+                    <img [routerLink]="['/profile-profesor', usu.id]" [src]="usu.foto |imagen" class="card-img" alt="Foto">
+                        <div class="card-body">
+                            <h5 class="card-title">{{usu.nombre}} {{usu.apellidos}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

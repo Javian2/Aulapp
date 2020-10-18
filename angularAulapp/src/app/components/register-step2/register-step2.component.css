@@ -1,0 +1,120 @@
+#input{
+    margin: auto;
+}
+
+#exampleModal{
+    margin-top: 10em;
+}
+
+h2{
+    margin-bottom: 2em;
+}
+
+.progress{
+    width: 70%;
+    align-self: center;
+}
+
+.card{
+    width: 40%;
+    margin: auto;
+    align-self: center;
+}
+
+#asig{
+    cursor: pointer;
+}
+
+#badges{
+    display: flex;
+    flex-direction: row;
+}
+
+#badgeIndividual{
+    margin-right: 1.5em;
+    margin-bottom: 1.5em;
+    margin-left: 1.5em;
+    padding: 5px 15px;
+    background-image: linear-gradient(120deg, #515FC9 0%, #7f42f1 100%);
+}
+
+#badgeIndividual2{
+    padding: 5px 15px;
+    margin-right: 3em;
+    margin-bottom: 1.5em;
+    margin-left: 1.5em;
+    opacity: 70%;
+}
+
+#badgeIndividual2>i{
+    margin-left: 1em;
+}
+
+#badgeIndividual3{
+    padding: 5px 15px;
+    margin-right: 3em;
+    margin-bottom: 1.5em;
+    margin-left: 1.5em;
+    opacity: 70%;
+}
+
+#badgeIndividual3>i{
+    margin-left: 1em;
+}
+
+#icono:hover{
+    cursor: pointer;
+}
+
+.card-category>a{
+    font-size: 75%;
+    color: black;
+    font-weight: 300;
+  }
+
+  .trigger {
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    background-color: #515FC9;
+    color: #212121;
+    display: inline-block;
+    margin: 2px 5px;
+    }
+
+    .trigger>i{
+        cursor: pointer;
+    }
+    
+    .hoverable, .trigger {
+    transition: box-shadow 0.55s;
+    box-shadow: 0;
+    }
+    
+    .hoverable:hover, .trigger:hover {
+    transition: box-shadow 0.45s;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+#containerFlex{
+    display: flex;
+    flex-direction: row;
+}
+
+    #containerFlex>button{
+        display: block;
+        margin: auto;
+    }
+    #containerFlex>h5{
+        align-content: flex-end;
+    }
+
+#atras{
+    color: black;
+    font-size: 19px;
+    margin-top: 4px;
+}
+
+    #atras:hover{
+        text-decoration: underline;
+    }

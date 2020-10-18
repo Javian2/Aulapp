@@ -1,0 +1,395 @@
+#uno,
+.uno {
+    background-color: #515FC9;
+    border-radius: 10px;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-bottom: 0.4em;
+    padding-top: 0.4em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-color: transparent;
+}
+
+#uno:hover,
+.uno:hover {
+    color: #515FC9;
+    background-color: white;
+    transition: 300ms;
+}
+
+#b {
+    background-color: #48465B;
+    border-radius: 10px;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.7em;
+    padding-top: 0.8em;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-color: transparent;
+}
+
+#b:disabled {
+    background: #dddddd;
+    border-color: #dddddd;
+}
+
+#uno:disabled {
+    color: #515FC9;
+    background: #dddddd;
+    border-color: #dddddd;
+    border-color: transparent;
+}
+
+#cuatro {
+    border: 2px solid rgb(245, 56, 56);
+    background-color: rgb(245, 56, 56);
+    border-radius: 10px;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-bottom: 0.4em;
+    padding-top: 0.4em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-color: transparent;
+}
+
+#dos {
+    background-color: white;
+    border-radius: 10px;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #515FC9;
+    font-weight: 600;
+    font-size: 15px;
+    border-color: transparent;
+}
+
+#dos:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 7px 30px #515FC9;
+    transition: 500ms;
+}
+
+#cuatro:hover {
+    color: rgb(245, 56, 56);
+    background-color: white;
+    transition: 300ms;
+}
+
+#cinco {
+    background-color: white;
+    border-radius: 50px;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-bottom: 0.3em;
+    padding-top: 0.3em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #515FC9;
+    font-weight: 600;
+    font-size: 15px;
+    border-color: transparent;
+}
+
+#cinco:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 7px 30px #515FC9;
+    transition: 500ms;
+}
+
+.container {
+    margin-left: 0;
+}
+
+.calendar {
+    margin-left: 7em;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid white;
+    border-radius: 15px;
+    max-width: 660px;
+}
+
+h1 {
+    margin-left: 4.2em;
+    font-weight: bold;
+    font-size: 26px;
+    color: #48465B;
+}
+
+h4 {
+    font-weight: 600;
+    font-size: 16px;
+    color: #48465B;
+}
+
+.textos {
+    margin-left: 7em;
+}
+
+p {
+    color: #48465B;
+}
+
+.datos {
+    margin-left: 7em;
+    background-color: rgb(245, 245, 245);
+    border: 1px solid white;
+    border-radius: 15px;
+    max-width: 42em;
+}
+
+#botones {
+    display: flex;
+    justify-content: space-between;
+}
+
+#convertirProfesor {
+    display: flex;
+}
+
+#botoneAsignatura {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.botonCerrar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#img-profe {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#profesor {
+    background-image: linear-gradient(-20deg, #5446d5 0%, #986ce8 100%);
+}
+
+.noasigs {
+    text-align: center;
+    margin-left: -0.5em;
+    font-size: 18px;
+}
+
+.variable {
+    border: 1px solid white;
+    padding: 0.7em;
+    border-radius: 10px;
+    background-color: white;
+    font-weight: 500;
+    color: #757A99;
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: 240px 10px;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+}
+
+.titulo {
+    color: white;
+    font-weight: 600;
+    /*text-transform: uppercase;*/
+    font-size: 26px;
+    letter-spacing: 0.3px;
+    margin-bottom: -1em;
+    line-height: 37px;
+}
+
+.descripcion {
+    color: white;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+#impartidas {
+    display: flex;
+    justify-content: space-between;
+}
+
+#precio {
+    width: 5em;
+}
+
+#formularioPrecio {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.badge {
+    background-color: #515FC9;
+    border-radius: 10px;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-bottom: 0.4em;
+    padding-top: 0.4em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white !important;
+    font-weight: 600;
+    font-size: 14px;
+    border-color: #515FC9;
+}
+
+#url {
+    display: flex;
+}
+
+#seis {
+    background-color: #515FC9;
+    border-radius: 10px;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-bottom: 0.4em;
+    padding-top: 0.4em;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border-color: transparent;
+}
+
+#seis:hover {
+    color: #515FC9;
+    background-color: white;
+    transition: 300ms;
+}
+
+#seis:disabled {
+    color: #515FC9;
+    background: #dddddd;
+    border-color: #dddddd;
+    border-color: transparent;
+}
+
+#mensajeURL {
+    color: red;
+}
+
+.fa-times:hover {
+    color: red;
+    cursor: pointer;
+}
+
+.input-form:focus {
+    border-color: #515FC9 !important;
+}
+
+@media (max-width: 991px) {
+    .datos {
+        margin-left: 0em;
+    }
+    .calendar {
+        margin-left: 0em;
+    }
+}
+
+.ole,
+.elo {
+    background: rgb(200, 240, 255);
+    padding: 6px 36px;
+    display: inline-block;
+    font-size: 1.2em;
+    border-radius: 4px;
+    border: 0;
+    cursor: pointer;
+    color: #000;
+}
+
+.ct {
+    text-align: center
+}
+
+.two {
+    background: rgb(180, 220, 255);
+}
+
+.three {
+    background: rgb(160, 200, 255);
+}
+
+.four {
+    background: rgb(140, 180, 255);
+}
+
+.ole:hover,
+.elo:hover {
+    background: dodgerblue;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    box-shadow: 0 0 0 #555;
+}
+
+.multiple_elements {
+    padding: 30px 0 10px 0;
+    text-align: center;
+}
+
+
+/*customizing tooltip color*/
+
+
+/*right tooltip*/
+
+.tooltip.right>.tooltip-arrow {
+    border-right-color: dodgerblue;
+}
+
+
+/*bottom tooltip*/
+
+.tooltip.bottom>.tooltip-arrow {
+    border-bottom-color: dodgerblue;
+}
+
+
+/*top tooltip*/
+
+.tooltip.top>.tooltip-arrow {
+    border-top-color: dodgerblue;
+}
+
+
+/*left tooltip*/
+
+.tooltip.left>.tooltip-arrow {
+    border-left-color: dodgerblue;
+}
+
+
+/*tooltip inner*/
+
+.tooltip>.tooltip-inner {
+    background-color: dodgerblue;
+    text-shadow: 0 1px 1px #000;
+    font-weight: normal;
+}
+
+code {
+    color: royalblue;
+    background-color: azure;
+}
+
+@media (max-width:640px) {
+    .ole,
+    .elo {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+.form-control:focus {
+    border-color: #515FC9;
+}

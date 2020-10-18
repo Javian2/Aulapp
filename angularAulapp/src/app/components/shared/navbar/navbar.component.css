@@ -1,0 +1,136 @@
+.navbar {
+    background-color: #252537;
+    box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+.photo>img {
+    border-radius: 20px;
+    margin-top: -1em;
+}
+
+.rounded-circle {
+    margin-top: -7px;
+}
+
+.Titulo {
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+.dropdown-item {
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.btn {
+    border-radius: 16px;
+    margin-top: 7px;
+    margin-left: 10px;
+    color: white;
+    font-weight: 600;
+    margin-top: 2px;
+    background-color: #323247;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    transition: 300ms;
+    color: white;
+}
+
+.dropdown-divider {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.nav-item>a {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    margin-left: 1em;
+    padding-bottom: -1em;
+    padding-top: 1em;
+    font-weight: 600;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.vacio {
+    text-align: center;
+    opacity: 90%;
+}
+
+.vacio>p {
+    margin-top: 1em;;
+    font-size: 14px;
+    color: #1d1d1d;
+    font-weight: 600;
+}
+
+#Notificaciones {
+    left: -14.5rem;
+    width: 290px;
+    padding: 1em;
+}
+
+.titulo {
+    font: 600 14px/1.2 "Poppins", sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.texto {
+    font-size: 13px;
+}
+
+.notificacion {
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    padding: 11px;
+    font-weight: 600;
+    border-radius: 5px;
+}
+
+.circle {
+    position: absolute;
+    background-color: #f07379;
+    text-align: center;
+    border-radius: 12px;
+    padding-bottom: 17px;
+    min-width: 17px;
+    padding-left: 5px;
+    padding-right: 6px;
+    height: 14px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 17px;
+    left: 2.5rem;
+    top: 4px
+}
+
+.navbar-brand {
+    margin-right: 1em;
+    margin-left: 0.5em;
+}
+
+.fa-bars {
+    color: #515FC9;
+    font-size: 30px;
+}
+
+.navbar-toggler {
+    background-color: #252537;
+}
+
+.navbar-toggler:focus {
+    outline: 0;
+}
+
+.dropdown li.nav-item a:hover {
+    background-color: #515FC9;
+}

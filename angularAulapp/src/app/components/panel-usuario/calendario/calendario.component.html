@@ -1,0 +1,6 @@
+<div class='app'>
+    <div class='app-calendar'>
+        <full-calendar #calendar defaultView="dayGridMonth" [header]="header" [plugins]="calendarPlugins" [weekends]="calendarWeekends" [events]="calendarEvents" [weekends]="true" [locale]='es' [firstDay]='1' [eventTimeFormat]="eventTimeFormat" [footer]="footer"
+            [showNonCurrentDates]="false" (dateClick)="handleDateClick($event)"></full-calendar>
+    </div>
+</div>

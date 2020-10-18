@@ -1,0 +1,273 @@
+<div *ngIf="profesor" class="jumbotron">
+    <div class="row">
+        <div *ngIf="profesor && profesor.foto" class="col-lg-4 animated fadeIn">
+            <div class="card card-foto">
+                <img [src]="profesor.foto | imagen" class="card-img-top" alt={{profesor.nombre}}>
+                <div *ngIf="comprobarVideo" class="enlace text-center p-2">
+                    <a (click)="scroll(video)">Ver video de presentación</a>
+                </div>
+                <div class="card-body" style="height: 55px;">
+                    <a class="icon" id="favoritos1" (click)="crearfav(idProfesor)" *ngIf="estafav==false">
+                        <i id="nofav" class="fas fa-heart" title="añadir favorito"></i>
+                    </a>
+                    <a id="favoritos2" class="icon" (click)="borrarfav(idProfesor)" *ngIf="estafav==true">
+                        <i id="fav" class="fas fa-heart" title="quitar favorito"></i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 animated fadeIn">
+            <h2 class="font-weight-bold" style="margin-top: 10px; color: #48465B;">{{profesor.nombre}} {{profesor.apellidos}}
+                <span *ngIf="profesor.email == 'irene.rgarcia13@gmail.com' || profesor.email == 'davidfuentesalonso17@gmail.com' ||
+                profesor.email == 'raul11jg@gmail.com' || profesor.email == 'javian235@gmail.com'
+                || profesor.email == 'ifran16.ua@gmail.com' || profesor.email == 'rubenmusala@gmail.com'" class="admin2">Admin</span>
+
+                <span *ngIf="profesor.email != 'irene.rgarcia13@gmail.com' && profesor.email != 'davidfuentesalonso17@gmail.com' &&
+                profesor.email != 'raul11jg@gmail.com' && profesor.email != 'javian235@gmail.com'
+                && profesor.email != 'ifran16.ua@gmail.com' && profesor.email != 'rubenmusala@gmail.com'" class="admin">Profesor</span>
+            </h2>
+
+            <fieldset (click)="scroll(valoracionesdiv)" id="media" class="rating">
+                <label *ngIf="this.media>0" style="color: #EEE16B" class="full" for="star1"></label>
+                <label *ngIf="this.media<=0" class="full" for="star5"></label>
+
+                <label *ngIf="this.media>1" style="color: #EEE16B" class="full" for="star1"></label>
+                <label *ngIf="this.media<=1" class="full" for="star4"></label>
+
+                <label *ngIf="this.media>2" style="color: #EEE16B" class="full" for="star1"></label>
+                <label *ngIf="this.media<=2" class="full" for="star3"></label>
+
+                <label *ngIf="this.media>3" style="color: #EEE16B" class="full" for="star1"></label>
+                <label *ngIf="this.media<=3" class="full" for="star2"></label>
+
+                <label *ngIf="this.media>4" style="color: #EEE16B" class="full" for="star1"></label>
+                <label *ngIf="this.media<=4" class="full" for="star1"></label>
+                <span style="margin-left: 6px; font-weight: bold; font-size: 13px; color: #757A99;">({{ i }} valoraciones)</span>
+            </fieldset>
+
+
+            <div style="margin-left: -1em;" class="col-lg-10 mt-3">
+                <p class="card-text font-weight-bold animated fadeIn" style="color: #48465B;"> Asignaturas que imparte: </p>
+                <div class="asignaturas">
+                    <button (click)="cambiarPrecio(asignatura.precio)" *ngFor="let asignatura of asigs">
+                        <span style="float: left;">{{asignatura.nombreAsignatura}}</span><span style="float: right; margin-left: 20px;">{{asignatura.precio}}€/hora</span>
+                        </button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-4 mt-3 text-center animated fadeIn">
+
+            <a id="pedirClase" [routerLink]="" *ngIf="_usuario.estaLogueado() != false" data-toggle="modal" data-target="#exampleModal" class="button mb-2 col-6"> Pedir Clase</a>
+            <a id="pedirClase" [routerLink]="['/login']" *ngIf="_usuario.estaLogueado() != true" class="button mb-1 col-6">Reservar</a>
+            <br>
+            <div *ngIf="horarioPerfil.length != 0" style="margin-right:12em;" class="col-lg-6 text-center animated fadeIn mt-2">
+                <p id="textoHorario" class="card-text font-weight-bold animated fadeIn mt-4" style="color: #48465B;"> Horario: </p>
+                <div id="horarioPerfil" class="light">
+                    <div *ngIf="lunes" id="lunes">
+                        <p class="card-text font-weight-bold animated fadeIn mt-1 mr-3">Lunes</p>
+
+                        <div *ngFor="let horario of horarioPerfil">
+                            <span *ngIf="horario.dia == 'Lunes'" class="badge">{{horario.hora_inicio}}:00 - {{horario.hora_fin}}:00</span>
+                        </div>
+                    </div>
+                    <div *ngIf="martes" id="martes">
+                        <p class="card-text font-weight-bold animated fadeIn mt-1 mr-3">Martes</p>
+
+                        <div *ngFor="let horario of horarioPerfil">
+                            <span *ngIf="horario.dia == 'Martes'" class="badge ">{{horario.hora_inicio}}:00 - {{horario.hora_fin}}:00</span>
+                        </div>
+
+                    </div>
+                    <div *ngIf="miercoles" id="miercoles">
+                        <p class="card-text font-weight-bold animated fadeIn mt-1 mr-3">Miercoles</p>
+
+                        <div *ngFor="let horario of horarioPerfil">
+                            <span *ngIf="horario.dia == 'Miércoles'" class="badge">{{horario.hora_inicio}}:00 - {{horario.hora_fin}}:00</span>
+                        </div>
+
+                    </div>
+                    <div *ngIf="jueves" id="jueves">
+                        <p class="card-text font-weight-bold animated fadeIn mt-1 mr-3">Jueves</p>
+
+                        <div *ngFor="let horario of horarioPerfil">
+                            <span *ngIf="horario.dia == 'Jueves'" class="badge">{{horario.hora_inicio}}:00 - {{horario.hora_fin}}:00</span>
+                        </div>
+
+                    </div>
+                    <div *ngIf="viernes" id="viernes">
+                        <p class="card-text font-weight-bold animated fadeIn mt-1 mr-3">Viernes</p>
+
+                        <div *ngFor="let horario of horarioPerfil">
+                            <span *ngIf="horario.dia == 'Viernes'" class="badge">{{horario.hora_inicio}}:00 - {{horario.hora_fin}}:00</span>
+                        </div>
+                    </div>
+                    <div *ngIf="sabado" id="sabado">
+                        <p class="card-text font-weight-bold animated fadeIn mt-1 mr-3">Sabado</p>
+
+                        <div *ngFor="let horario of horarioPerfil">
+                            <span *ngIf="horario.dia == 'Sabado'" class="badge col-1">{{horario.hora_inicio}}:00 - {{horario.hora_fin}}:00</span>
+                        </div>
+
+                    </div>
+                    <div *ngIf="domingo" id="domingo">
+                        <p class="card-text font-weight-bold animated fadeIn mt-1 mr-3">Domingo</p>
+
+                        <div *ngFor="let horario of horarioPerfil">
+                            <span *ngIf="horario.dia == 'Domingo'" class="badge">{{horario.hora_inicio}}:00 - {{horario.hora_fin}}:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 pb-1">
+            <div style="overflow: auto; height: 710px;" class="card">
+                <div #valoracionesdiv id="valoraciones" class="card-header font-weight-bold">
+                    Opiniones de otro usuarios
+                </div>
+                <ngcontainer *ngFor="let alumno of alumnos">
+                    <div id="tarjeta" *ngFor="let valoracion of valoraciones">
+                        <div *ngIf="alumno.id == valoracion.idusuario" class="card-body text-primary">
+                            <div class="row opinion animated fadeIn">
+                                <div class="col-lg-2">
+                                    <img [src]="alumno.foto | imagen" class="card-img-top" width="150" height="150" alt={{alumno.nombre}}>
+                                </div>
+                                <div class="col-lg-10 mt-2">
+                                    <h5 style="color: #252537; font-weight: 600; font-size: 17px;" >{{alumno.nombre}} {{alumno.apellidos}}</h5>
+
+
+                                    <!-- Se viene chorizamen -->
+                                    <fieldset style="margin-top: -0.5em;" class="rating">
+                                        <label *ngIf="valoracion.puntuacion>0" style="color: #EEE16B" class="full" for="star1"></label>
+                                        <label *ngIf="valoracion.puntuacion<=0" class="full" for="star5"></label>
+
+                                        <label *ngIf="valoracion.puntuacion>1" style="color: #EEE16B" class="full" for="star1"></label>
+                                        <label *ngIf="valoracion.puntuacion<=1" class="full" for="star4"></label>
+
+                                        <label *ngIf="valoracion.puntuacion>2" style="color: #EEE16B" class="full" for="star1"></label>
+                                        <label *ngIf="valoracion.puntuacion<=2" class="full" for="star3"></label>
+
+                                        <label *ngIf="valoracion.puntuacion>3" style="color: #EEE16B" class="full" for="star1"></label>
+                                        <label *ngIf="valoracion.puntuacion<=3" class="full" for="star2"></label>
+
+                                        <label *ngIf="valoracion.puntuacion>4" style="color: #EEE16B" class="full" for="star1"></label>
+                                        <label *ngIf="valoracion.puntuacion<=4" class="full" for="star1"></label>
+                                    </fieldset>
+
+                                    <p style="color: #7E7E7E; font-weight: 500;
+                  font-size: 14px;
+                  letter-spacing: -0.04em;">{{valoracion.mensaje}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ngcontainer>
+            </div>
+        </div>
+        <div class="col-lg-6 pb-1">
+            <div class="row">
+
+                <div class="card">
+                    <div #valoracionesdiv id="valoraciones" class="card-header font-weight-bold">
+                        Descripción del profesor:
+                    </div>
+                    <p id="descripcion" class="h-50">{{profesor.descripcion}}</p>
+                    <p #video class="usuariosDesde text-light" id="fechaProf"> <span class="font-weight-bold">Usuario desde</span> <br> {{mes}}del{{respuesta[0]}} </p>
+                </div>
+            </div>
+            <div *ngIf="comprobarVideo" class="mt-4">
+                <div class="card mb-3 animated fadeIn">
+                    <div id="video" class="card-header font-weight-bold">Video de presentación</div>
+                    <div class="card-body text-primary p-0 mt-4">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" [src]="url" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <input class="variation" id="bluepurple" type="radio" value="1" name="color" checked="checked" />
+        <main>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Solicitar clase</h2>
+
+                    <span class="close" data-dismiss="modal" aria-label="Close" aria-hidden="true">&times;</span>
+
+                </div>
+                <form ngNativeValidate #f="ngForm">
+                    <div class="modal-body">
+                        <div class="filters__item">
+                            <span class="badge status-secondary font-weight-bold" style="float: left; margin-top: -1px;">1</span><label class="label-form" for="subject">Elige tu asignatura</label></div>
+                        <select #asignatura required (change)="comprobarEnable()" (change)="cambiarPrecio(asignatura.value)" class="input-form" ngModel id="subject" name="asignatura">
+                                <option *ngFor="let asigna of asigs" value={{asigna.nombreAsignatura}}>{{asigna.nombreAsignatura}}</option>
+                                </select>
+                        <div class="filters__item">
+                            <span class="badge status-secondary font-weight-bold" style="float: left; margin-top: -1px;">2</span>
+
+                            <label class="label-form" for="start">Selecciona fecha y hora:</label></div>
+
+                        <div id="datetime">
+                            <input #date id="fecha" (change)="mostrarHoras(date.value)" class="input-form mr-2" type="date" ngModel name="date" id="fecha" required>
+                            <ng-container *ngIf="primeraHora">
+                                <select #time id="time" (change)="quitarDisabled(asignatura.value)" (click)="quitarDisabled(asignatura.value)" #time class="input-form" ngModel [(ngModel)]="primeraHora" name="time" required>
+                            
+                                    <ng-container *ngFor="let hora of horaEstado">
+                                            <option *ngIf="hora.estado == 'libre'" value={{hora.hora}}> {{hora.hora}}:00 
+                                                <span> - {{hora.hora + 1}}:00 </span>
+                                            </option>
+                                            <option disabled *ngIf="hora.estado == 'ocupada'" value={{hora.hora}}> {{hora.hora}}:00 
+                                                <span> - {{hora.hora + 1}}:00 (reservada)</span>
+                                            </option>
+                            
+                                    </ng-container>
+                            
+                                </select>
+                            </ng-container>
+
+                            <ng-container *ngIf="!primeraHora">
+                                <select disabled class="input-form animated fadeIn" name="time" id="time2">
+                                    <option  selected="selected">No disponible</option>
+                                </select>
+                            </ng-container>
+
+
+                        </div>
+
+                        <div class="filt ers__item">
+                            <span class="badge status-secondary font-weight-bold" style="float: left; margin-top: -1px;">3</span>
+                            <label class="label-form" for="area">Alguna aclaración para el profesor</label></div>
+                        <textarea id="area" class="input-form" ngModel name="observacion" rows="10" cols="50">Escribe aquí</textarea>
+
+                        <div id="pagarclase" style="margin-bottom: 10px;" class="filters__item">
+                            <span class="badge status-secondary font-weight-bold" style="float: left; margin-top: -1px;">4</span>
+                            <label class="label-form" for="start">Pagar y reservar clase:</label></div>
+                        <div (click)="prueba();" type="submit" style="margin-bottom: 1em;" class="paypal" id="paypal" #paypal></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="CerrarModal" class="button col-4" data-dismiss="modal">Cancelar</button>
+                        <!-- <button (click)="crearReserva();" id="btn" class="button col-5">Realizar reserva</button> -->
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+#uno {
+    color: #ab47bc;
+    border-color: #ab47bc;
+}
+
+#uno:hover {
+    color: seashell;
+    background-color: #ab47bc;
+}
+
+#dos {
+    color: #7b1fa2;
+    border-color: #7b1fa2;
+}
+
+#dos:hover {
+    color: seashell;
+    background-color: #7b1fa2;
+}
+
+#tres {
+    color: #e913bb;
+    border-color: #e913bb;
+}
+
+#tres:hover {
+    color: seashell;
+    background-color: #e913bb;
+}
+
+#cuatro {
+    color: #e60f0f;
+    border-color: #e60f0f;
+}
+
+#cuatro:hover {
+    color: seashell;
+    background-color: #e60f0f;
+}
+
+.page-header {
+    background-image: url('../../../assets/img/perfilu.webp');
+    background-size: cover;
+    height: 100%;
+    width: auto;
+    margin-top: 0;
+}

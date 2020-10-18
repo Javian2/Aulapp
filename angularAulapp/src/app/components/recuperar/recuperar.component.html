@@ -1,0 +1,59 @@
+<div class="page-header header-filter" style="background-image: url('.../../../assets/img/fondonuevo.webp'); background-size: cover; background-position: top center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                <div class="card card-login" *ngIf="checked==false">
+                    <!-- (ngSubmit)="recupcontra(f)" -->
+                    <form class="form" ngNativeValidate #f="ngForm" (ngSubmit)="recupcontra(f)">
+                        <div class="card-header card-header-primary text-center">
+                            <h4 class="card-title">Recupera tu contraseña</h4>
+                        </div>
+                        <p class="description text-center">Escribe tu correo electrónico</p>
+                        <div class="card-body">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                                <input [ngModel]="email" type="email" placeholder="Correo electrónico" name="email" required class="form-control" id="login">
+                            </div>
+                        </div>
+                        <div class="footer text-center">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" class="btn btn-primary">Recuperar Contraseña</button>
+                                </div>
+                            </div>
+                            <p class="text-center mt-3 text-dark"><a routerLink='/login'>Cancelar</a></p>
+                        </div>
+                    </form>
+                </div>
+                <div class="card card-login" *ngIf="checked==true">
+                    <div class="card-header card-header-primary text-center">
+                        <h4 class="card-title">Recupera tu contraseña</h4>
+                    </div>
+                    <div class="inicial" *ngIf="times < 5">
+                        <p class="description text-center">Mensaje de restablecimiento de contraseña enviado</p>
+                        <div class="footer text-center">
+                            <p class="text-center mt-3 text-dark">¿No te ha llegado? <a (click)="recup2()"> ¡Vuelve a enviarlo! </a></p>
+                        </div>
+                        <div class="footer text-center">
+                            <p class="text-center mt-3 text-dark">Volver a <a routerLink='/login'>Inicio de Sesión.</a></p>
+                        </div>
+                    </div>
+                    <div class="alto" *ngIf="times >= 5">
+                        <div class="footer text-center">
+                            <p class="text-center mt-3 text-dark">Has enviado el correo demasiadas veces.</p>
+                            <p class="text-center mt-3 text-dark">Vuelve a intentarlo más tarde.</p>
+                            <p class="text-center mt-3 text-dark">Tiempo restante:</p>
+                            <p class="text-center mt-3 text-dark">{{minutos | number: '2.0'}}:{{segundos | number: '2.0'}}</p>
+                        </div>
+                        <div class="footer text-center">
+                            <p class="text-center mt-3 text-dark">Volver a <a routerLink='/login'>Inicio de Sesión.</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

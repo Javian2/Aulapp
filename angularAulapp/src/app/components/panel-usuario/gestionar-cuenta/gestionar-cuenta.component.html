@@ -1,0 +1,171 @@
+<app-navbar-panelusuario></app-navbar-panelusuario>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="sidebar col-lg-3 p-0 m-0">
+            <app-sidebar-panelusuario></app-sidebar-panelusuario>
+        </div>
+        <div class="prueba col-lg-7">
+            <div class="page-header header-filter">
+
+                <div *ngIf="alumBanner == '0'" id="profesor" class="datos card p-4 mt-5 mb-5 animated fadeIn">
+                    <div class="botonCerrar">
+                        <a style="color: white; margin-top: -0.5em;" (click)="setPara()" class="btn"><i style="font-size: 17px;" class="fas fa-times"></i></a>
+                    </div>
+                    <div class="grid-container">
+                        <div class="grid-item">
+                            <div class="titulo mb-4">
+                                Conviértete en profesor y gana dinero con Aulapp enseñando lo que mejor sabes.
+                            </div>
+
+                            <div style="margin-top:-1em" id="convertir">
+                                <a id="dos" (click)="convertir(user.id)" class="btn btn-outline-danger mt-5">Convertirse en Profesor</a>
+                            </div>
+                        </div>
+
+                        <div class="grid-item">
+                            <div style="margin-right: -2em; margin-top: 2em;" id="img-profe">
+                                <img src="../../../../assets/img/undraw_teacher_35j2.svg" width="300px" height="auto">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <h1 *ngIf="para" style="font-size: 25px;" class="mt-5 mb-2">Gestionar Asignaturas</h1>
+                <h4 *ngIf="para" style="font-size: 15px;" class="textos mb-5">Modifica las asignaturas que impartes y su precio correspondiente</h4>
+                <div *ngIf="para" class="datos card p-5 mt-5 mb-5">
+                    <h1 *ngIf="asignaturasImpartidas.length == 0" class="noasigs">¿Aún no impartes ninguna asignatura?</h1>
+                    <p *ngIf="asignaturasImpartidas.length == 0" style="text-align: center; color: #757A99">¡Añádelas ahora para poder dar clases!</p>
+                    <div>
+                        <div *ngFor="let asignaturas of asignaturasImpartidas; let i = index">
+                            <div class="animated fadeIn">
+                                <form id="impartidas" ngNativeValidate #f="ngForm" [formGroup]="forma" (ngSubmit)="editarimparte(asignaturas.id)" class="mb-3">
+                                    <div class="col-md-2 mt-2">
+                                        <label for="precio"> <span id="b">{{asignaturas.nombreAsignatura}}: </span></label>
+                                    </div>
+                                    <div id="formularioPrecio" class="form-group text-center">
+                                        <input (keyup)="quitarDisabled(i)" (keyup.backspace)="quitarDisabled(i)" formControlName="precio" value="{{asignaturas.precio}}" placeholder="precio" name="precio" type="text" class="form-control variable" id="precio">
+                                        <h4 style="font-size: 16px;" class="ml-2 mt-1">€ / hora</h4>
+                                    </div>
+                                    <div class="">
+                                        <button class="botonGuardar" id="uno" type="submit" disabled><i
+                                            class="fas fa-edit m-1"></i> Guardar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="botonAsignaturas">
+                        <a id="uno" *ngIf="para" [routerLink]="['/register-step2', user.id]" routerLinkActive="router-link-active" class="btn btn-outline-danger mt-5"><i class="fas fa-book m-1"></i>Gestionar asignaturas</a>
+                        <a id="uno" *ngIf="para" (click)="obtenerHorario()" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-danger mt-5 ml-4"><i class="far fa-calendar-alt m-1"></i>Gestionar horario</a>
+
+                    </div>
+                </div>
+
+                <h1 style="font-size: 25px;" class="mt-5 mb-2">Gestionar cuenta</h1>
+                <h4 style="font-size: 15px;" class="textos mb-5">Modifica o añade más información sobre ti y tu cuenta</h4>
+
+                <div class="datos card p-5 mt-5 mb-5">
+                    <div *ngIf="user">
+                        <p *ngIf="user.nombre" class="card-text"><strong>Nombre:</strong></p>
+                        <p *ngIf="user.nombre" class="variable">{{user.nombre}}</p>
+                        <p *ngIf="user.apellidos" class="card-text"> <strong>Apellidos:</strong></p>
+                        <p *ngIf="user.apellidos" class="variable">{{user.apellidos}}</p>
+                        <p *ngIf="user.fecha_nacimiento" class="card-text"> <strong>Fecha de Nacimiento:</strong></p>
+                        <p *ngIf="user.fecha_nacimiento" class="variable">{{user.fecha_nacimiento}}</p>
+                        <p *ngIf="user.descripcion" class="card-text"> <strong>Descripcion:</strong></p>
+                        <p *ngIf="user.descripcion" class="variable mb-5">{{user.descripcion}}</p>
+                        <div id="botones" class="mt-5">
+                            <a id="uno" *ngIf="para == false" (click)="convertir(user.id)" class="btn btn-outline-danger">Convertirse
+                en Profesor</a>
+
+                            <a id="uno" [routerLink]="['/profile-edit', user.id]" class="btn btn-outline-info ml-2 mr-2"><i
+                  class="fas fa-edit m-1"></i>Editar Datos</a>
+
+                            <a *ngIf="para" [routerLink]="['/profile-profesor', user.id]" class="uno btn btn-outline-info ml-2 mr-2"><i 
+                    class="fas fa-address-card m-1"></i>Ver perfil público</a>
+
+
+                            <a id="cuatro" (click)="deleteUser(user.id)" class="btn btn-outline-danger"><i
+                  class="fas fa-trash m-1"></i>Borrar Cuenta</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h1 *ngIf="para" style="font-size: 25px;" class="mt-5 mb-2">Vídeo de presentación</h1>
+                <h4 *ngIf="para" style="font-size: 15px;" class="textos mb-5">Añade un vídeo de presentación que se verá en tu perfil</h4>
+
+
+                <div *ngIf="para" class="datos card p-5 mt-5 mb-5">
+                    <div *ngIf="url && url1" class="embed-responsive embed-responsive-16by9 mb-5">
+                        <iframe class="embed-responsive-item" [src]="url" allowfullscreen></iframe>
+                    </div>
+                    <div id="url">
+                        <input (keyup)="comprobarURL(sacarURL.value)" value="{{url1}}" #sacarURL id="inputUrl" placeholder="Introduce la url de tu vídeo" type="url" class="form-control variable mr-3" required>
+                        <button (click)="guardarURL(sacarURL.value);" id="seis" class="btn btn-outline-info col-2" disabled>Guardar</button>
+                        <button (click)="eliminarURL();" class="btn btn-outline-danger ml-2 col-2" id="cuatro">Eliminar</button>
+                    </div>
+                    <h4 *ngIf="comprobarEnlace == false" id="mensajeURL" class="mt-3">Debes introducir una URL de forma correcta</h4>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<main>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Gestionar horario</h3>
+
+                </div>
+                <div class="modal-body text-center">
+
+                    <div class="row font-weight-bold mb-2">
+                        <div class="col-md-4">Día de la semana</div>
+                        <div class="col-md-3">Hora inicio</div>
+                        <div class="col-md-3">Hora fin</div>
+                        <div class="col-md-2"></div>
+                    </div>
+
+                    <div *ngFor="let horario of horariosProfesor; let i = index;">
+                        <form ngNativeValidate #f="ngForm" (ngSubmit)="guardarHorario(f)">
+
+                            <div id="horario{{i}}" class="row mb-1 animated fadeIn">
+                                <div class="col-md-4">
+                                    <select required class="input-form" [(ngModel)]="horario.dia" id="dia1" name="dia{{i}}">
+                                        <option *ngFor="let dia of dias" value={{dia}}>{{dia}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3"> <input [(ngModel)]="horario.hora_inicio" class="input-form" type="number" name="hora_inicio{{i}}" value={{horario.hora_inicio}} min="00" max="23" step="1" /> </div>
+                                <div class="col-md-3"> <input [(ngModel)]="horario.hora_fin" class="input-form" type="number" name="hora_fin{{i}}" value={{horario.hora_fin}} min="00" max="23" step="1" /></div>
+                                <div class="col-md-2" (click)="eliminarHorario(i)"><i class="fas fa-times"></i></div>
+                            </div>
+
+                            <button type="submit" id="enviar-form{{i}}" class="d-none">Guardar horario</button>
+
+                        </form>
+                    </div>
+                    <button type="button" style="background-color: rgb(124, 36, 255); color: white; margin-top: -0.2em;" (click)="addHora()" class="button col-5 m-2 mt-3 pl-4 pr-4">Añadir horario</button>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" style=" background-color: rgb(208, 205, 255); color: #5348FF; margin-top: -0.2em;" id="CerrarModal" class="button col-4" data-dismiss="modal">Cancelar</button>
+                    <button type="button" style="background-color: #5348FF; color: white; margin-top: -0.2em;" (click)="guardarHorario(null)" for="enviar-form" class="button col-5">Guardar horario</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,27 @@
+.active>a>p {
+    font-size: 120%;
+    padding-left: 2em;
+}
+
+li {
+    max-height: 2rem;
+}
+
+li a p {
+    font-size: 0.9rem !important;
+}
+
+li a:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+    transition: 1s;
+}
+
+@media (min-width: 992px) {
+    #sidebar2 {
+        display: none;
+    }
+    .fas {
+        font-size: 200px;
+    }
+}

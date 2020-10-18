@@ -1,0 +1,123 @@
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" [routerLink]="['/home']">
+        <img src="../../../../assets/img/Aulapp-Logo.webp" width="35" height="35" alt="Aulapp" class="d-inline-block align-top">
+        <span class="Titulo">Aulapp</span>
+    </a>
+
+    <!--Responsive-->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555" aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
+      <span *ngIf="!_usuarioService.estaLogueado()" class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+      <div *ngIf="_usuarioService.estaLogueado()" class="photo">
+        <img *ngIf="mensaje" [src]="mensaje | imagen" alt="Profile Photo" width="35" height="35">
+        <img *ngIf="user && !mensaje" [src]="user.foto | imagen" alt="Profile Photo" width="35" height="35">
+        <i class="fas fa-chevron-down text-light ml-1"></i>
+    </div>
+    </button>
+
+    <!--Navbar responsive-->
+    <div class="d-lg-none collapse navbar-collapse collapse navbar-collapse" id="navbarSupportedContent-555">
+        <ul class="d-lg-none navbar-nav ml-auto nav-flex-icons">
+            <!--Si no esta logueado-->
+            <li class="nav-item">
+                <a *ngIf="_usuarioService.estaLogueado() == false" class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Iniciar sesión</a>
+            </li>
+            <li class="nav-item" *ngIf="_usuarioService.estaLogueado() != true">
+                <button type="button" [routerLink]="['/register']" class="btn">Registrarse</button>
+            </li>
+
+            <!--Si esta logueado-->
+            <div *ngIf="_usuarioService.estaLogueado() == true" class="dropdown nav-item dropleft">
+                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent-555"><a class="dropdown-item" [routerLink]="['/buscador']" routerLinkActive="active"><i class="fas fa-search"></i>  Buscador</a></li>
+                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent-555"><a class="dropdown-item" [routerLink]="['/panel-usuario/gestionar-cuenta']" routerLinkActive="active"><i class="fas fa-sliders-h"></i>  Gestionar cuenta</a></li>
+                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent-555"><a class="dropdown-item" [routerLink]="['/admin']" *ngIf="_usuarioService.esAdmin() == true" routerLinkActive="active"><i class="fas fa-wrench"></i>  Panel de administrador</a></li>
+                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent-555"><a class="dropdown-item" [routerLink]="['/profile-profesor', publicProfile]" routerLinkActive="active" *ngIf="para"><i class="fas fa-user-circle"></i>  Ver perfil público</a></li>
+                <li class="dropdown-divider"></li>
+                <li class="nav-item" data-toggle="collapse" data-target="#navbarSupportedContent-555"><a class="dropdown-item" (click)="_usuarioService.logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a></li>
+                <li class="nav-item dropdown" *ngIf="_usuarioService.estaLogueado() == true">
+                    <a class="nav-link" id="navbarDropdownMenuLink-555" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-bell" style="font-size: 18px;"></i>
+              </a>
+                    <span *ngIf="notificacion>0" class="circle"> {{ notificacion }} </span>
+
+                    <div id="Notificaciones" class="dropdown-menu dropdown-secondary">
+
+                        <h1 class="titulo">Notificaciones</h1>
+                        <hr>
+                        <div *ngFor="let notis of notificacionArray" class="drop-content">
+                            <li class="notificacion" *ngIf="notificacion>0">
+                                <i style="font-size: 11px; cursor: pointer; float: right;" (click)="eliminarNoti(notis.id)" class="fas fa-times"></i><a class="texto">{{notis.texto}}</a>
+                            </li>
+                        </div>
+                        <div class="vacio" *ngIf="notificacion<=0">
+                            <img src="../../../../assets/img/empty.png" width="100" height="auto">
+                            <p>No tienes ninguna notificación</p>
+                        </div>
+                        <li *ngIf="notificacion>0" class="dropdown-divider"></li>
+                        <a *ngIf="notificacion>0" (click)="eliminarTodasLasNotis(user.id)" style="font-size: 11px; font-weight: bold;">Borrar todo</a>
+                    </div>
+                </li>
+            </div>
+
+
+
+        </ul>
+    </div>
+
+
+
+    <!-- Navbar cuando no es responsive -->
+    <div class="d-lg-block d-none collapse navbar-collapse" id="navbarSupportedContent-555">
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+            <!--Si no esta logueado-->
+            <li class="nav-item">
+                <a *ngIf="_usuarioService.estaLogueado() == false" class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Iniciar sesión</a>
+            </li>
+            <li class="nav-item" *ngIf="_usuarioService.estaLogueado() != true">
+                <button type="button" [routerLink]="['/register']" class="btn">Registrarse</button>
+            </li>
+
+            <!--Si esta logueado-->
+            <li class="nav-item" *ngIf="_usuarioService.estaLogueado() == true">
+                <a [routerLink]="['/buscador']" class="nav-link pointer" routerLinkActive="active">Buscador</a>
+            </li>
+
+
+            <li class="nav-item dropdown" *ngIf="_usuarioService.estaLogueado() == true">
+                <a [routerLink]="" class="nav-link" id="navbarDropdownMenuLink-555" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="far fa-bell" style="font-size: 18px;"></i></a>
+                <span *ngIf="notificacion>0" class="circle"> {{ notificacion }} </span>
+
+                <div id="Notificaciones" class="dropdown-menu dropdown-secondary">
+
+                    <h1 class="titulo">Notificaciones</h1>
+                    <div *ngFor="let notis of notificacionArray" class="drop-content">
+                        <li class="notificacion" *ngIf="notificacion>0">
+                            <i style="font-size: 11px; color:rgb(255, 94, 94); cursor: pointer; float: right;" (click)="eliminarNoti(notis.id)" class="fas fa-times"></i><a class="texto">{{notis.texto}}</a>
+                        </li>
+                    </div>
+                    <div class="vacio" *ngIf="notificacion<=0">
+                        <img src="../../../../assets/img/empty.png" width="80" height="80">
+                        <p>No tienes ninguna notificación</p>
+                    </div>
+                    <li *ngIf="notificacion>0" class="dropdown-divider"></li>
+                    <a *ngIf="notificacion>0" (click)="eliminarTodasLasNotis(user.id)" style="font-size: 11px; color:rgb(255, 94, 94); font-weight: bold;">Borrar todo</a>
+                </div>
+            </li>
+
+
+            <li class="nav-item avatar dropdown" *ngIf="_usuarioService.estaLogueado() == true">
+                <a [routerLink]="" id="foto" class="nav-link" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle" *ngIf="mensaje" [src]="mensaje | imagen" alt="Profile Photo" width="30" height="30">
+                    <img class="rounded-circle" *ngIf="user && !mensaje" [src]="user.foto | imagen" alt="Profile Photo" width="30" height="30">
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55">
+                    <!-- <a class="dropdown-item" *ngIf="this.para==true" [routerLink]="['/profile-profesor', this.id]"><i class="fas fa-user"></i> Ver mi perfil</a> -->
+                    <a class="dropdown-item" [routerLink]="['/panel-usuario/gestionar-cuenta']"><i class="fas fa-sliders-h"></i> Gestionar cuenta</a>
+                    <a class="dropdown-item" [routerLink]="['/admin']" *ngIf="_usuarioService.esAdmin() == true"><i class="fas fa-wrench"></i>  Panel de administrador</a>
+                    <a class="dropdown-item" [routerLink]="['/profile-profesor', publicProfile]" *ngIf="esProfesor"><i class="fas fa-user-circle"></i>  Ver perfil público</a>
+                    <li class="dropdown-divider"></li>
+                    <a [routerLink]="" class="dropdown-item" (click)="_usuarioService.logout()"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--/.Navbar -->

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+@import '@fullcalendar/core/main.css';
+@import '@fullcalendar/daygrid/main.css';
+* {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+body {
+    background-color: #e3e3e3;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fast {
+    -webkit-animation-duration: 0.4s;
+    animation-duration: 0.4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+.btn-primary {
+    background-color: #515FC9 !important;
+}

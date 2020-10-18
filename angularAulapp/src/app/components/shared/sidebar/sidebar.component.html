@@ -1,0 +1,102 @@
+<div class="sidebar">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+          Panel de administrador
+        </a>
+        </div>
+        <ul class="nav">
+            <li class="active ">
+                <a [routerLink]="['panel']" routerLinkActive="router-link-active">
+                    <p>Panel</p>
+                </a>
+            </li>
+            <li class="active ">
+                <a [routerLink]="['crud-usuario']" routerLinkActive="router-link-active">
+                    <p>Usuarios</p>
+                </a>
+            </li>
+            <li class="active">
+                <a [routerLink]="['crud-alumno']" routerLinkActive="router-link-active">
+                    <p>Alumnos</p>
+                </a>
+            </li>
+            <li class="active">
+                <a [routerLink]="['crud-prof']" routerLinkActive="router-link-active">
+                    <p>Profesores</p>
+                </a>
+            </li>
+            <li class="active">
+                <a [routerLink]="['crud-asignaturas']" routerLinkActive="router-link-active">
+                    <p>Asignaturas</p>
+                </a>
+            </li>
+            <li class="active">
+                <a [routerLink]="['crud-imparte']" routerLinkActive="router-link-active">
+                    <p>Imparte</p>
+                </a>
+            </li>
+            <li class="active">
+                <a [routerLink]="['crud-reserva']" routerLinkActive="router-link-active">
+                    <p>Reservas</p>
+                </a>
+            </li>
+            <li class="active">
+                <a [routerLink]="['crud-valoraciones']" routerLinkActive="router-link-active">
+                    <p>Valoraciones</p>
+                </a>
+            </li>
+            <li class="active">
+                <a [routerLink]="['crud-reportes']" routerLinkActive="router-link-active">
+                    <p>Reportes</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<nav id="sidebar2" class="navbar navbar-expand-lg">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarAdmin" aria-controls="sidebarAdmin" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fas fa-bars text-light"></i></span>
+      </button>
+    <div class="collapse navbar-collapse " id="sidebarAdmin">
+        <ul class="navbar-nav ml-md-auto">
+            <li class="nav-item" data-toggle="collapse" data-target="#sidebarAdmin">
+                <a [routerLink]="['panel']" routerLinkActive="router-link-active">
+                    <p>Panel</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['crud-usuario']" routerLinkActive="router-link-active">
+                    <p>Usuarios</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['crud-alumno']" routerLinkActive="router-link-active">
+                    <p>Alumnos</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['crud-prof']" routerLinkActive="router-link-active">
+                    <p>Profesores</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['crud-asignaturas']" routerLinkActive="router-link-active">
+                    <p>Asignaturas</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['crud-imparte']" routerLinkActive="router-link-active">
+                    <p>Imparte</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['crud-reserva']" routerLinkActive="router-link-active">
+                    <p>Reservas</p>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
