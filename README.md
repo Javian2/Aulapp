@@ -50,11 +50,12 @@ To better visualise the functionalities, in addition to viewing [the website](ht
 
 ## Contributors
 
-- @iFran16
-- @Ineludible
-- @Kingmar616
-- @Raul11jg
-- @rubenmus
+- [Fran Parrilla](https://github.com/iFran16)
+- [Irene Ruiz](https://github.com/Ineludible)
+- [David Fuentes](https://github.com/Kingmar616)
+- [Raúl Jiménez](https://github.com/Raul11jg)
+- [Ruben Muriana](https://github.com/rubenmus)
+
 
 
 
