@@ -28,7 +28,7 @@ For more details, visit the [Aulapp](https://aulapp.ovh/) website.
 - Sequelize
 - Nginx
 
-## Functionalities
+## Features
 
 - Login
 - Differentiated registration for students and teachers
